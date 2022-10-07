@@ -1,16 +1,52 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:list-style="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>세부정보</title>
-
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>세부정보페이지</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="container">
-        <p th:text="${cafe_id}"></p>
-        <!-- id로 검색해서 정보 출력 -->
 
-        <!-- 지도에서 보기 버튼 -->
+<!-- Page content-->
+<div class="container">
+    <div class="text-left mt-3 mb-3">
+        <h1 class="cafe-name"><p th:text="${cafe_name}"></p></h1>
+        <p><small class="cafe-addr text-muted">♠ 주소 서울~~~~마포~~~~~~</small></p>
+        <a class="map-link">>지도에서보기</a>
     </div>
+    <div class="card bg-white" th:each="val, i:${cafe_keydata}">
+        <div class="row g-0" >
+            <div class="card-body">
+                <div class="d-flex">
+                    <strong class="card-title key-word" th:text="${val[0]}"></strong>
+                    <p class="badge bg-light text-dark key-num" th:text="${val[1]}"></p>
+                </div>
+                <dd class="key-sent-list" style="list-style:none;">
+                    <li th:text="${val[2]}"></li>
+                    <li th:text="${val[3]}"></li>
+                    <li th:text="${val[4]}"></li>
+                </dd>
+            </div>
+        </div>
+    </div>
+    <p>Bootstrap v5.1.3</p>
+
+</div>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+<script>
+    //지도화면으로 이동
+
+
+
+</script>
 </body>
 </html>
