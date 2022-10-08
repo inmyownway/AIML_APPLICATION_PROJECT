@@ -17,6 +17,9 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'javax.servlet:jstl'
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	runtimeOnly 'mysql:mysql-connector-java'
 }
 
 tasks.named('test') {
