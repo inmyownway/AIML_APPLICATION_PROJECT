@@ -14,8 +14,10 @@
 <!-- 네이버 지도 -->
 네이버지도
 <!-- 팝업창 -->
-    <!-- 더보기 버튼 (누른 카페의 ID를 가져와서 전달)-->
-    <button type="button" onclick="location.href='more?id='+'0'">더보기</button>
+    <!-- 더보기 버튼 (value = 누른 카페의 ID)-->
+    <form id="form-id" action="/more" method="get">
+        <input type="hidden" class="input" name="id" value="0">
+        <button class="btn" type="submit">더보기</button>
+    </form>
 </body>
-
 </html>
