@@ -15,6 +15,12 @@ repositories {
 dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.projectlombok:lombok:1.18.20'
+	implementation 'org.projectlombok:lombok:1.18.20'
+	implementation 'org.projectlombok:lombok:1.18.20'
+	implementation 'org.projectlombok:lombok:1.18.20'
+	implementation 'org.projectlombok:lombok:1.18.20'
+	implementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -22,6 +28,16 @@ dependencies {
 	implementation 'javax.servlet:jstl'
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 	runtimeOnly 'mysql:mysql-connector-java'
+
+	implementation 'org.springframework.boot:spring-boot-starter'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'javax.servlet:jstl'
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+
+	implementation 'mysql:mysql-connector-java'	//mysql
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'	//jpa
 }
 
 tasks.named('test') {
