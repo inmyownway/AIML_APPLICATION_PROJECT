@@ -33,10 +33,7 @@ create table cafe_sen (
     sen_key varchar(50) not null,
     key_num int not null,
 	FOREIGN KEY (cafe_id) REFERENCES cafe_info (cafe_id) on delete cascade
-
-
     );
-
 
 
 
@@ -62,27 +59,27 @@ insert into cafe_sen
 values(0,'크로플 맛집인듯',5);
 
 insert into cafe_sen
-values(0,'조용해요',0);
+values(1,'조용해요',0);
 insert into cafe_sen
-values(0,'카공족들 많네요',1);
+values(1,'카공족들 많네요',1);
 insert into cafe_sen
-values(0,'콘센트가 많아 편해요',2);
+values(1,'콘센트가 많아 편해요',2);
 insert into cafe_sen
-values(0,'책상이 넓고 편해요',3);
+values(1,'책상이 넓고 편해요',3);
 insert into cafe_sen
-values(0,'공간이 매우 넓어요',4);
+values(1,'공간이 매우 넓어요',4);
 insert into cafe_sen
-values(0,'아아 맛집인듯',5);
+values(1,'아아 맛집인듯',5);
 
 insert into cafe_sen
-values(0,'다들 조용히 공부하는거같아요',0);
+values(2,'다들 조용히 공부하는거같아요',0);
 insert into cafe_sen
-values(0,'공부하기 딱 좋은 분위기',1);
+values(2,'공부하기 딱 좋은 분위기',1);
 insert into cafe_sen
-values(0,'콘센트가 책상마다 있어요',2);
+values(2,'콘센트가 책상마다 있어요',2);
 insert into cafe_sen
-values(0,'책상이 넓고 편해요',3);
+values(2,'책상이 넓고 편해요',3);
 insert into cafe_sen
-values(0,'공간이 생각보다 커요',4);
+values(2,'공간이 생각보다 커요',4);
 insert into cafe_sen
-values(0,'민초 맛집인듯',5);
+values(2,'민초 맛집인듯',5);

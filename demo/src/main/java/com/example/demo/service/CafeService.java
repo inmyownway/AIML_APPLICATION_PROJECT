@@ -1,5 +1,7 @@
-package com.example.demo.db;
+package com.example.demo.service;
 
+import com.example.demo.db.Cafe;
+import com.example.demo.db.CafeRepository;
 import com.example.demo.dto.CafeDto;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,10 @@ public class CafeService {
         CafeDto cafeDto = CafeDto.builder()
                 .cafe_id(cafe.getCafe_id())
                 .cafe_name(cafe.getCafe_name())
+                .cafe_place(cafe.getCafe_place())
+                .key1(cafe.getKey1())
+                .key2(cafe.getKey2())
+                .key3(cafe.getKey3())
                 .build();
 
         return cafeDto;
