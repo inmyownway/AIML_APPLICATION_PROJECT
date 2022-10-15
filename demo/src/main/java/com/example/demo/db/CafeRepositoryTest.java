@@ -16,13 +16,19 @@ public class CafeRepositoryTest {
     CafeRepository cafeRepository;
     @Test
     public void SelectDummies() {
-        Integer cafe_id = 1;
+
+
+
+        Integer cafe_id =0;
         Optional<Cafe> result = cafeRepository.findById(cafe_id);
         System.out.println("=============================");
-        System.out.println("ada");
-        if(result.isPresent())
+        if(result.isPresent()) {
+            Cafe cafe = result.get();
+            System.out.println(cafe+" @@");
 
-        {            Cafe cafe = result.get();
-            System.out.println(cafe);
-            System.out.println("hi");}    }
+        }
+        System.out.println("=============================");
+
+    }
+
 }

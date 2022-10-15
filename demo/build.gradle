@@ -13,31 +13,19 @@ repositories {
 }
 
 dependencies {
-
-
-
-
-
-
-	implementation 'org.projectlombok:lombok:1.18.20'
-	implementation 'org.springframework.boot:spring-boot-starter-test'
-	runtimeOnly 'mysql:mysql-connector-java'
-
 	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'javax.servlet:jstl'
-	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	//implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	annotationProcessor('org.projectlombok:lombok')
+	testAnnotationProcessor('org.projectlombok:lombok')
 
-	implementation 'mysql:mysql-connector-java'	//mysql
+	runtimeOnly 'mysql:mysql-connector-java'	//mysql
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'	//jpa
-
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
-
-
-
+	implementation 'org.projectlombok:lombok:1.18.24'    //lombok
 }
 
 tasks.named('test') {
