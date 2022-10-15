@@ -1,14 +1,25 @@
 package com.example.demo.controller;
 
+import com.example.demo.db.Cafe;
+import com.example.demo.db.CafeRepository;
+import com.example.demo.db.CafeService;
+import com.example.demo.dto.CafeDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class HomeController {
+
+    private CafeService cafeService;
+    public HomeController(CafeService cafeService){
+        this.cafeService = cafeService;
+    }
 
     /* 지도화면 */
     @GetMapping("/")
@@ -16,12 +27,9 @@ public class HomeController {
         return "home";
     }
 
-    /* 세부정보화면 */
+    /* 세부정보화면*/
     @RequestMapping("/more")
     public String cafeInfo(@RequestParam("id") String id, Model model){
-        // 예시 적용해보기
-        //int id=0;
-        String name="가게이름여기에";
         String[] label = {"조용함","키2","키3","키4","키5","키6"};
         String[] key_cnt = {"12","999","30","45","555","60"};
         String[][] key_example = {{"조용함1문자ㅏㅏㅏㅇㅇㅇㅇ","조용2","조용3"},{"공부1","공부2","공부3"},
@@ -36,10 +44,10 @@ public class HomeController {
             }temp.add(temp2);
         }
         // View로 값 전달
-        model.addAttribute("cafe_id", id);
-        model.addAttribute("cafe_name", name);
         model.addAttribute("cafe_keydata", temp);
+
+        CafeDto cafeDto = cafeService.getCafe(Integer.parseInt(id));
+        model.addAttribute("cafeDto", cafeDto);
         return "detailPage";
     }
-
 }
