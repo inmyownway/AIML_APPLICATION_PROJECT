@@ -48,40 +48,40 @@ insert into cafe_info
 values(2,'엔젤리너스 L7홍대점', '서울 마포구 양화로 141 1, 2F 엔제리너스 L7홍대점', 200,30,30,24,115,120);
 
 insert into cafe_sen
-values(0,'엄청 조용해요',0);
+values(0, 0,'엄청 조용해요',0);
 insert into cafe_sen
-values(0,'공부하기 좋은분위기',1);
+values(1, 0,'공부하기 좋은분위기',1);
 insert into cafe_sen
-values(0,'콘센트 많아요',2);
+values(2, 0,'콘센트 많아요',2);
 insert into cafe_sen
-values(0,'책상 편해요',3);
+values(3, 0,'책상 편해요',3);
 insert into cafe_sen
-values(0,'공간 넓어요',4);
+values(4, 0,'공간 넓어요',4);
 insert into cafe_sen
-values(0,'크로플 맛집인듯',5);
+values(5, 0,'크로플 맛집인듯',5);
 
 insert into cafe_sen
-values(1,'조용해요',0);
+values(6, 1,'조용해요',0);
 insert into cafe_sen
-values(1,'카공족들 많네요',1);
+values(7, 1,'카공족들 많네요',1);
 insert into cafe_sen
-values(1,'콘센트가 많아 편해요',2);
+values(8, 1,'콘센트가 많아 편해요',2);
 insert into cafe_sen
-values(1,'책상이 넓고 편해요',3);
+values(9, 1,'책상이 넓고 편해요',3);
 insert into cafe_sen
-values(1,'공간이 매우 넓어요',4);
+values(10, 1,'공간이 매우 넓어요',4);
 insert into cafe_sen
-values(1,'아아 맛집인듯',5);
+values(11,1,'아아 맛집인듯',5);
 
 insert into cafe_sen
-values(2,'다들 조용히 공부하는거같아요',0);
+values(12, 2,'다들 조용히 공부하는거같아요',0);
 insert into cafe_sen
-values(2,'공부하기 딱 좋은 분위기',1);
+values(13, 2,'공부하기 딱 좋은 분위기',1);
 insert into cafe_sen
-values(2,'콘센트가 책상마다 있어요',2);
+values(14, 2,'콘센트가 책상마다 있어요',2);
 insert into cafe_sen
-values(2,'책상이 넓고 편해요',3);
+values(15, 2,'책상이 넓고 편해요',3);
 insert into cafe_sen
-values(2,'공간이 생각보다 커요',4);
+values(16, 2,'공간이 생각보다 커요',4);
 insert into cafe_sen
-values(2,'민초 맛집인듯',5);
+values(17, 2,'민초 맛집인듯',5);

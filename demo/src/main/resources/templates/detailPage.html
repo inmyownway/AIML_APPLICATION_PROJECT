@@ -22,12 +22,6 @@
         <button type="button" class="btn-close" aria-label="Close"></button>
     </div>
 </nav>
-<!--
-<span th:each="d : ${dto}">
-    <p th:text="${d.cafe_name}"></p>
-    <p th:text="${d.key_num}"></p>
-    <p th:text="${d.sentList[0].sen_key}"></p>
-</span>-->
 
 <div class="container bg-white border-0">
     <section class="section-cafeInfo pt-3">
@@ -37,28 +31,37 @@
             <a href='/' class="map-link text-end">지도에서보기</a>
         </div>
     </section>
-    <section class="section-keyInfo" th:each="n, stat : ${dto.key_num}">
-        <div class="card bg-white mb-2">
-            <div class="row g-0" >
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <strong class="card-title" th:text="${dto.sentList[stat.index].key_num}">.</strong>
-                        <p class="badge bg-light text-muted light" th:text="리뷰+${n}">개수</p>
-                    </div>
-                    <dd class="key-sent-list" style="list-style:none;">
-                        <li style="text-overflow:ellipsis; overflow:hidden; white-space: nowrap;" th:if="${stat.index == dto.sentList[stat.index].key_num}" th:text="${dto.sentList[stat.index].sen_key}"></li>
-                    </dd>
+        <section class="section-keyInfo">
+            <th:block th:each="n,i : ${dto.key_num}">
+            <div class="card bg-light mb-2">
+                <div class="row g-0" >
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <strong class="card-title" th:text="${i.index}">조용함</strong>
+                                <p class="badge bg-light text-muted light" th:text="리뷰+${n}">개수</p>
+                            </div>
+                            <th:block th:each="data, stat : ${dto.sentList}">
+                                <dd class="key-sent-list" style="list-style:none;" >
+                                    <li style="text-overflow:ellipsis; overflow:hidden; white-space: nowrap;"
+                                        th:if="${data.key_num==i.index}"
+                                        th:text="${data.sen_key}">문장</li>
+                                </dd>
+                            </th:block>
+                        </div>
                 </div>
             </div>
-        </div>
+            </th:block>
     </section>
-</div>
+</div>-->
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
 <script>
     //지도화면으로 이동
+
+    //문장 띄워주기
+
 </script>
 </body>
 </html>

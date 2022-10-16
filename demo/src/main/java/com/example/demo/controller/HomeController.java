@@ -34,14 +34,15 @@ public class HomeController {
     @RequestMapping("/more")
     public String cafeInfo(@RequestParam("id") String id, Model model){
         CafeDto cafeDto = cafeService.getCafe(Integer.parseInt(id));
-        List<Sentence> sentDto = sentService.getSentence(Integer.parseInt(id));
-        CafeAndSentDTO cafeAndSentDTO = new CafeAndSentDTO(cafeDto, sentDto);
+        List<Sentence> sentList = sentService.getSentence(Integer.parseInt(id));
+
+        CafeAndSentDTO cafeAndSentDTO = new CafeAndSentDTO(cafeDto, sentList);
         model.addAttribute("dto", cafeAndSentDTO);
 //        List<Sentence> sentences = sentService.getSentence(Integer.parseInt(id));
 //        model.addAttribute("sentList", sentences);
 //
 //        CafeDto cafeDto = cafeService.getCafe(Integer.parseInt(id));
-//        model.addAttribute("cafeDto", cafeDto);
+//        model.addAttribute("dto", cafeDto);
         return "detailPage";
     }
 }
