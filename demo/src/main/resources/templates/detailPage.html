@@ -22,26 +22,31 @@
         <button type="button" class="btn-close" aria-label="Close"></button>
     </div>
 </nav>
+<!--
+<span th:each="d : ${dto}">
+    <p th:text="${d.cafe_name}"></p>
+    <p th:text="${d.key_num}"></p>
+    <p th:text="${d.sentList[0].sen_key}"></p>
+</span>-->
+
 <div class="container bg-white border-0">
     <section class="section-cafeInfo pt-3">
-        <h1 class="text-left fw-bold" th:text="${cafeDto.cafe_name}"></h1>
-        <p class="text-left text-muted mt-n1" th:text="${cafeDto.cafe_place}"></p>
+        <h1 class="text-left fw-bold" th:text="${dto.cafe_name}"></h1>
+        <p class="text-left text-muted mt-n1" th:text="${dto.cafe_place}"></p>
         <div class="mt-5 text-end mb-1">
             <a href='/' class="map-link text-end">지도에서보기</a>
         </div>
     </section>
-    <section class="section-keyInfo" th:each="val:${cafeDto.key_num}">
+    <section class="section-keyInfo" th:each="n, stat : ${dto.key_num}">
         <div class="card bg-white mb-2">
             <div class="row g-0" >
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
-                        <strong class="card-title" th:text="키워드"></strong>
-                        <p class="badge bg-light text-muted light" th:text="리뷰+${val}">개수</p>
+                        <strong class="card-title" th:text="${dto.sentList[stat.index].key_num}">.</strong>
+                        <p class="badge bg-light text-muted light" th:text="리뷰+${n}">개수</p>
                     </div>
                     <dd class="key-sent-list" style="list-style:none;">
-                        <li style="text-overflow:ellipsis; overflow:hidden; white-space: nowrap;" th:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"></li>
-                        <li style="text-overflow:ellipsis; overflow:hidden; white-space: nowrap;" th:text="문장2"></li>
-                        <li style="text-overflow:ellipsis; overflow:hidden; white-space: nowrap;" th:text="문장3"></li>
+                        <li style="text-overflow:ellipsis; overflow:hidden; white-space: nowrap;" th:if="${stat.index == dto.sentList[stat.index].key_num}" th:text="${dto.sentList[stat.index].sen_key}"></li>
                     </dd>
                 </div>
             </div>

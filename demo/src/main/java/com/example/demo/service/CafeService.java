@@ -1,12 +1,11 @@
 package com.example.demo.service;
 
 import com.example.demo.db.Cafe;
-import com.example.demo.db.CafeRepository;
+import com.example.demo.repository.CafeRepository;
 import com.example.demo.dto.CafeDto;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
 import java.util.Optional;
 
 @Service

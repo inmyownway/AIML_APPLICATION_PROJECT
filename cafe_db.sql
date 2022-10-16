@@ -29,9 +29,11 @@ create table cafe_info (
     );
 
 create table cafe_sen (
-	cafe_id int not nUll,
+    sent_id int not NULL
+	cafe_id int not NULL,
     sen_key varchar(50) not null,
     key_num int not null,
+    primary key (sent_id),
 	FOREIGN KEY (cafe_id) REFERENCES cafe_info (cafe_id) on delete cascade
     );
 
