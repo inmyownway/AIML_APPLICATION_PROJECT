@@ -9,8 +9,13 @@
     <link href="styles.css">
     <style>
     @import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
+    @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
     body {
         font-family: 'NanumSquareRound',sans-serif;
+    }
+    h1 {
+        font-family: 'Noto Sans KR', sans-serif;
     }
     </style>
 </head>
@@ -18,8 +23,8 @@
 <body>
 <!-- Page content-->
 <nav class="navbar">
-    <div class="container-fluid m-2">
-        <button type="button" class="btn-close" aria-label="Close"></button>
+    <div class="p-3">
+        <button type="button" class="btn btn-white" onClick="location.href='/'"><i class="arrow left"></i></button>
     </div>
 </nav>
 
@@ -29,21 +34,25 @@
         <p class="text-left text-muted mt-n1" th:text="${dto.cafe_place}"></p>
         <div class="mt-5 text-end mb-1">
             <a href='/' class="map-link text-end">지도에서보기</a>
+            <!--<form id="form-id" action="/more" method="get">
+                <input type="hidden" class="input" name="id" value="${dto.cafe_id}">
+                <button class="btn" type="submit">지도에서보기</button>
+            </form>-->
         </div>
     </section>
         <section class="section-keyInfo">
             <th:block th:each="n,i : ${dto.key_num}">
-            <div class="card bg-light mb-2">
+            <div class="card bg-white mb-2">
                 <div class="row g-0" >
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <span th:switch="${i.index}">
-                                    <strong th:case="0" class="card-title">조용함</strong>
-                                    <strong th:case="1" class="card-title">공부하기 좋은 분위기</strong>
-                                    <strong th:case="2" class="card-title">콘센트</strong>
-                                    <strong th:case="3" class="card-title">편한 자리</strong>
-                                    <strong th:case="4" class="card-title">넓은 공간</strong>
-                                    <strong th:case="5" class="card-title">맛있는 메</strong>
+                                    <strong th:case="0" class="card-title text-muted">조용함</strong>
+                                    <strong th:case="1" class="card-title text-muted">공부하기 좋은 분위기</strong>
+                                    <strong th:case="2" class="card-title text-muted">콘센트</strong>
+                                    <strong th:case="3" class="card-title text-muted">편한 자리</strong>
+                                    <strong th:case="4" class="card-title text-muted">넓은 공간</strong>
+                                    <strong th:case="5" class="card-title text-muted">맛있는 메뉴</strong>
                                 </span>
                                 <p class="badge bg-light text-muted light" th:text="리뷰+${n}">개수</p>
                             </div>
@@ -64,11 +73,17 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
-<script>
-    //지도화면으로 이동
-
-    //문장 띄워주기
-
-</script>
+<style>
+    .arrow {
+        border: solid black;
+        border-width: 0 2px 2px 0;
+        display: inline-block;
+        padding: 8px;
+    }
+    .left {
+      transform: rotate(135deg);
+      -webkit-transform: rotate(135deg);
+    }
+</style>
 </body>
 </html>

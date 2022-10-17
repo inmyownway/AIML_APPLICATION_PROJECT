@@ -38,11 +38,10 @@ public class HomeController {
 
         CafeAndSentDTO cafeAndSentDTO = new CafeAndSentDTO(cafeDto, sentList);
         model.addAttribute("dto", cafeAndSentDTO);
-//        List<Sentence> sentences = sentService.getSentence(Integer.parseInt(id));
-//        model.addAttribute("sentList", sentences);
-//
-//        CafeDto cafeDto = cafeService.getCafe(Integer.parseInt(id));
-//        model.addAttribute("dto", cafeDto);
+
         return "detailPage";
     }
+
+    @GetMapping("/search")
+    public String search(){ return "search"; }
 }
