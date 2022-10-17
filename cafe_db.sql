@@ -11,7 +11,6 @@ drop table IF EXISTS cafe_sen cascade;
 set foreign_key_checks = 1;   -- 외래키 체크하는 것으로 설정
 
 
-
 /*
   student 테이블 생성
 */
@@ -29,7 +28,7 @@ create table cafe_info (
     );
 
 create table cafe_sen (
-    sent_id int not NULL
+    sent_id int not NULL,
 	cafe_id int not NULL,
     sen_key varchar(50) not null,
     key_num int not null,
