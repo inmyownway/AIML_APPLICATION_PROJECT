@@ -38,15 +38,38 @@
 <!-- Page content-->
 <div class="container">
     <div class="text-center mt-5">
-        <h1>홍대 카공하기좋은 카페 추천 웹</h1>
+        <h1>홍대생의 카공지도</h1>
+        <span class="fs-5 fw-light">오늘은 카공하러 어디로 갈까?</span><br>
+        <span class="fs-6 fw-light">카페를 클릭해 다른 사람들은 어떻게 느꼈는지 확인해보세요!</span><br>
+        <!--
         <p class="lead">카페 클릭시 정보를 볼수있습니다.</p>
-        <h1 class="lead">더보기 클릭시 자세한 정보를 볼수있습니다.</h1>
+        <h1 class="lead">더보기 클릭시 자세한 정보를 볼수있습니다.</h1>-->
+    </div>
+</div>
+
+<div class="mt-3 mb-3" id="map" style="width:100%;height:75vh; margin: 0 auto; float : left">
+    <!--- 정보창 내용 -->
+    <div id="info-id" class="p-3">
+        <h3 id="cafename">값</h3>
+        <p class="fw-light" id="cafeplace">값</p>
+        <span id="num">리뷰 10개 </span><br>
+        <div class="filter-wrapper d-flex flex-wrap">
+            <span class="ps-3" id="cafekey1">값</span>
+            <span class="ps-3" id="cafekey2">값</span>
+            <span class="ps-3" id="cafekey3">값</span>
+            <span class="ps-3" id="cafekey4">값</span>
+            <span class="ps-3" id="cafekey5">값</span>
+            <span class="ps-3" id="cafekey6">값</span>
+        </div>
+        <!-- 더보기 버튼 (value = 누른 카페의 ID)-->
         <form id="form-id" action="/more" method="get">
-            <input type="hidden" class="input" name="id" id="id" value="">
+            <input type="hidden" class="input" name="id" id="id" value="1">
+            <button class="btn" type="submit">더보기</button>
         </form>
     </div>
 </div>
-<div id="map" style="width:100%;height:75vh; margin: 0 auto; float : left"></div>
+
+<button id="btn_loc" onclick="curLocation">내위치로</button>
 </body>
 
 <!-- Bootstrap core JS-->
@@ -54,35 +77,56 @@
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
 
+
+<script th:inline="javascript">
+    //db -> js 배열
+    let cafeArr = new Array();
+    let cafeList = [[${cafeList}]];
+
+    cafeList.forEach(function(item){
+        let cafe = new Object();
+
+        cafe.id = item.cafe_id
+        cafe.place = item.cafe_place
+        cafe.name = item.cafe_name
+        cafe.key_num = item.key_num
+        cafeArr.push(cafe);
+    });
+
+</script>
 <script type="text/javascript">
     $(function() {
         initMap();
     });
 
     function initMap() {
+        document.getElementById("info-id").style.display = 'none';
         var areaArr = new Array();  // 지역을 담는 배열 ( 지역명/위도경도 )
         areaArr.push(
             /*지역구 이름*/			/*위도*/					/*경도*/
+            {location : '베어스덴',lat:'37.5498732347229',lng:'126.922668185082'},
+            {location : '언더플로어',lat:'37.5498732347229',lng:'126.922668185082'},
+            {location : '작당모의',lat:'37.5606085859485',lng:'126.925417012996'},
+            {location : '아벨롭',lat:'37.5544654855325',lng:'126.918841400479'},
+            {location : '피오니',lat:'37.5500851944722',lng:'126.919764712297'},
+            {location : '모센즈스위트',lat:'37.5498355858466',lng:'126.920784708281'},
+            {location : '아오이토리,',lat:'37.5547753182732',lng:'126.929469982132'},
+            {location : '샌드커피',lat:'37.5592711660529',lng:'126.924174847151'},
+            {location : '카페 공명',lat:'37.5598714945494',lng:'126.926300212385'},
+            {location : '도식화',lat:'37.5497882345776',lng:'126.921792717037'},
+            {location : '앳커피',lat:'37.5498732347229',lng:'126.922668185082'},
             {location : '스타벅스 홍대역8번출구점' , lat : '37.55602055992243' , lng : '126.922939675669061'},
             {location : '스타벅스 홍대공항철도역점' , lat : '37.55748838221418' , lng : '126.92519320428961'},
             {location : '엔젤리너스 L7홍대점' , lat : '37.55567500441952' , lng : '126.92153667791773 '},
             {location : '홍대 투썸플레이스' , lat : '37.558061977615345' , lng : '126.92395616899384'},
             {location : '커피빈 홍대역8번출구점' , lat: '37.556776463845345',lng: '126.92498737097256 '},
-            {location : '홍대 앳커피',lat:'37.5498732347229',lng:'126.922668185082'},
-            {location : '홍대 작당모의',lat:'37.5606085859485',lng:'126.925417012996'},
-            {location : '홍대 아벨롭',lat:'37.5544654855325',lng:'126.918841400479'},
-            {location : '홍대 피오니',lat:'37.5500851944722',lng:'126.919764712297'},
-            {location : '홍대 모센즈스위트',lat:'37.5498355858466',lng:'126.920784708281'},
-            {location : '홍대 아오이토리,',lat:'37.5547753182732',lng:'126.929469982132'},
-            {location : '홍대 샌드커피',lat:'37.5592711660529',lng:'126.924174847151'},
-            {location : '홍대 카페 공명',lat:'37.5598714945494',lng:'126.926300212385'},
-            {location : '홍대 도식화',lat:'37.5497882345776',lng:'126.921792717037'},
+
         );
         let markers = new Array(); // 마커 정보를 담는 배열
         let infoWindows = new Array(); // 정보창을 담는 배열
 
         var map = new naver.maps.Map('map', {
-            center: new naver.maps.LatLng( 37.556020559922431,126.92293967566906),
+            center: new naver.maps.LatLng( 37.5507119,126.925618),
             zoom: 18
         });
         var infowindow = new naver.maps.InfoWindow();
@@ -149,27 +193,37 @@
             });
 
             /* 정보창 */
-            for(var j=0;j<3;j++)
+            for(var j=0;j<cafeArr.length;j++)
             {
                 if (areaArr[i].location == cafeArr[j].name)
                 {
                    var cname = cafeArr[j].name;
-                   var cplace = cafeArr[j].place;
-                   var key1 =  cafeArr[j].key_num[0];
-                   var key2 = cafeArr[j].key_num[1];
-                   var key3 = cafeArr[j].key_num[2];
-
+                   // var cplace = cafeArr[j].place;
+                   // var key1 =  cafeArr[j].key_num[0];
+                   // var key2 = cafeArr[j].key_num[1];
+                   // var key3 = cafeArr[j].key_num[2];
+                   // var key4 = cafeArr[j].key_num[3];
+                   // var key5 = cafeArr[j].key_num[4];
+                   // var key6 = cafeArr[j].key_num[5];
                 }
             }
+
+            var infoWindow = new naver.maps.InfoWindow({
+                anchorSize: new naver.maps.Size(0, 0),
+                content: '<div style="text-align:center;padding:10px;">' +
+                    '<b> </b>'+cname + '<br>' +
+                    ' </div>'
+            });
+            /*
             var infoWindow = new naver.maps.InfoWindow({
                 anchorSize: new naver.maps.Size(0, 0),
                 content: '<div style="width:600px;text-align:center;padding:10px;">' +
                     '<b> 카페이름: </b>'+cname + '<br><b> 카페주소: </b>'+ cplace +
-                     '<br><b> 조용함: </b>' + key1 +
+                    '<br><b> 조용함: </b>' + key1 +
                     '<br><b> 콘센트 이용: </b>' + key2 +
                     '<br><b> 공부하기 좋은 분위기 </b>' + key3 +
                     ' </div>'
-            });
+            });*/
             // 클릭했을 때 띄워줄 정보 HTML 작성
             markers.push(marker); // 생성한 마커를 배열에 담는다.
             infoWindows.push(infoWindow); // 생성한 정보창을 배열에 담는다.
@@ -177,8 +231,31 @@
 
         function getClickHandler(seq) {
             return function(e) {
-                document.getElementById("id").value = cafeArr[seq].id;
+                curId = cafeArr[seq].id;
+                document.getElementById("id").value = curId;
+                /////하단정보창
+                var t2 = document.getElementById("cafename");
+                var t3 = document.getElementById("cafeplace");
+                var t4 = document.getElementById("cafekey1");
+                var t5 = document.getElementById("cafekey2");
+                var t6 = document.getElementById("cafekey3");
+                var t7 = document.getElementById("cafekey4");
+                var t8 = document.getElementById("cafekey5");
+                var t9 = document.getElementById("cafekey6");
 
+                var aa=curId;
+                //p 태그 글자(innerText) 바꿔주기
+                //t1.innerText = "id : " + cafeArr[aa].id;
+                t2.innerText = cafeArr[aa].name;
+                t3.innerText = cafeArr[aa].place;
+                t4.innerText = "조용함  " + cafeArr[aa].key_num[0];
+                t5.innerText = "공부하기좋은분위기 " + cafeArr[aa].key_num[1];
+                t6.innerText = "콘센트이용 " + cafeArr[aa].key_num[2];
+                t7.innerText = "자리편함 " + cafeArr[aa].key_num[3];
+                t8.innerText = "공간넓음 " + cafeArr[aa].key_num[4];
+                t9.innerText = "메뉴맛있음 " + cafeArr[aa].key_num[5];
+                document.getElementById("info-id").style.display = 'block';
+                /////
                 // 마커를 클릭하는 부분
                 var marker = markers[seq], // 클릭한 마커의 시퀀스로 찾는다.
                     infoWindow = infoWindows[seq]; // 클릭한 마커의 시퀀스로 찾는다
@@ -187,6 +264,7 @@
                 } else {
                     infoWindow.open(map, marker); // 표출
                 }
+
             }
         }
 
@@ -196,63 +274,7 @@
         }
     }
 </script>
-<!--- 정보창 내용 -->
-<div id="info-id", class="p-5">
-    <h3 id="cafename">값</h3>
-    <p class="fw-light" id="cafeplace">값</p>
-    <span id="num">리뷰 10개 </span><br>
-    <span id="cafekey1">값</span><br>
-    <span id="cafekey2">값</span><br>
-    <span id="cafekey3">값</span><br>
-    <span id="cafekey4">값</span><br>
-    <span id="cafekey5">값</span><br>
-    <span id="cafekey6">값</span><br>
-    <button class="btn" type="submit">더보기</button>
-</div>
 
-
-
-<button id="btn_loc" onclick="curLocation">내위치로</button>
-
-<script th:inline="javascript">
-    //db -> js 배열
-    let cafeArr = new Array();
-    let cafeList = [[${cafeList}]];
-
-    cafeList.forEach(function(item){
-        let cafe = new Object();
-
-        cafe.id = item.cafe_id
-        cafe.place = item.cafe_place
-        cafe.name = item.cafe_name
-        cafe.key_num = item.key_num
-        cafeArr.push(cafe);
-    });
-
-    // 인덱스 변수
-    var aa=3;
-    var t2 = document.getElementById("cafename");
-    var t3 = document.getElementById("cafeplace");
-    var t4 = document.getElementById("cafekey1");
-    var t5 = document.getElementById("cafekey2");
-    var t6 = document.getElementById("cafekey3");
-    var t7 = document.getElementById("cafekey4");
-    var t8 = document.getElementById("cafekey5");
-    var t9 = document.getElementById("cafekey6");
-
-    //p 태그 글자(innerText) 바꿔주기
-    //t1.innerText = "id : " + cafeArr[aa].id;
-    t2.innerText = cafeArr[aa].name;
-    t3.innerText = cafeArr[aa].place;
-    t4.innerText = "조용함  " + cafeArr[aa].key_num[0];
-    t5.innerText = "공부하기좋은분위기 " + cafeArr[aa].key_num[1];
-    t6.innerText = "콘센트이용 " + cafeArr[aa].key_num[2];
-    t7.innerText = "자리편함 " + cafeArr[aa].key_num[3];
-    t8.innerText = "공간넓음 " + cafeArr[aa].key_num[4];
-    t9.innerText = "메뉴맛있음 " + cafeArr[aa].key_num[5];
-
-
-</script>
 <button type="button" class="btn btn-white" onClick="location.href='/search'"><i class="fa fa-search"></i></button>
 <button type="button" class="btn btn-link">로그인</button>
 

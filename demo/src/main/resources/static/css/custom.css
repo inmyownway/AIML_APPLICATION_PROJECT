@@ -51,3 +51,12 @@ input {
 .page_title{
     font-size: 28px;
 }
+
+#info-id{
+    position:absolute;
+    width: 100%;
+    bottom:0;
+    left:0;
+    background-color: #ffffff;
+    z-index:10;
+}
