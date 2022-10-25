@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>세부정보페이지</title>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/all.min.css" integrity="sha512-6c4nX2tn5KbzeBJo9Ywpa0Gkt+mzCzJBrE1RB6fmpcsoN+b/w/euwIMuQKNyUoU/nToKN3a8SgNOtPrbW12fug==" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+</head>
+
+<body>
+<!-- Page content-->
+<nav class="navbar">
+    <div class="p-3">
+        <button type="button" class="btn btn-white" onClick="location.href='/'"><i class="arrow left"></i></button>
+    </div>
+</nav>
+
+<div class="container bg-white border-0">
+    <section class="section-cafeInfo pt-3">
+        <h1 class="text-left fw-bold" th:text="${dto.cafe_name}"></h1>
+        <p class="text-left fw-light mt-n1" th:text="${dto.cafe_place}"></p>
+        <div class="mt-5 text-end mb-1">
+            <a href='/' class="map-link text-end">지도에서보기</a>
+            <!--<form id="form-id" action="/more" method="get">
+                <input type="hidden" class="input" name="id" value="${dto.cafe_id}">
+                <button class="btn" type="submit">지도에서보기</button>
+            </form>-->
+        </div>
+    </section>
+    <section class="section-keyInfo">
+        <th:block th:each="n,i : ${dto.key_num}">
+        <div class="card bg-white mb-2">
+            <div class="row g-0" >
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <span th:switch="${i.index}">
+                                <strong th:case="0" class="text-muted fw-normal">조용함</strong>
+                                <strong th:case="1" class="text-muted fw-normal">공부하기 좋은 분위기</strong>
+                                <strong th:case="2" class="text-muted fw-normal">콘센트</strong>
+                                <strong th:case="3" class="text-muted fw-normal">편한 자리</strong>
+                                <strong th:case="4" class="text-muted fw-normal">넓은 공간</strong>
+                                <strong th:case="5" class="text-muted fw-normal">맛있는 메뉴</strong>
+                            </span>
+                            <p class="badge bg-light text-muted light" th:text="리뷰+${n}">개수</p>
+                        </div>
+                        <th:block th:each="data, stat : ${dto.sentList}">
+                            <dd class="key-sent-list" style="list-style:none;" >
+                                <li class="fw-light" style="text-overflow:ellipsis; overflow:hidden; white-space: nowrap;"
+                                    th:if="${data.key_num==i.index}"
+                                    th:text="${data.sen_key}">문장</li>
+                            </dd>
+                        </th:block>
+                    </div>
+            </div>
+        </div>
+        </th:block>
+    </section>
+</div>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+</body>
+</html>

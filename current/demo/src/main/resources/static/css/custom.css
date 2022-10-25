@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+@import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
+@import url('http://fonts.googleapis.com/earlyaccess/notosanskr.css');
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.contents{
+    display:flex;
+    align-items: stretch;
+    flex-direction: column;
+    flex-grow: 1;
+    margin: 0 auto 50px;
+    max-width: 700px;
+}
+input {
+  width: 100%;
+  border-left:0;
+  border-right:0;
+  border-top:0;
+  border-bottom: 1px solid #bbb;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+.filter{
+    margin-top: 5px;
+    margin-right: 5px;
+}
+.btn-outline-secondary{
+    border-radius : 30px;
+    font-size: 14px;
+}
+
+.my_navbar{
+     display:flex;
+     align-items: center;
+     flex-direction: row;
+}
+.arrow {
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 8px;
+}
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+.page_title{
+    font-size: 28px;
+}
