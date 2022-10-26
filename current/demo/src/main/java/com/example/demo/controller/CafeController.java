@@ -24,27 +24,31 @@ public class CafeController {
         this.cafeService = cafeService;
     }
 
-//    @GetMapping("/")
-//    public String home() {
-//        return "home";
-//    }
-
-    /* 세부정보화면*/
-    @RequestMapping("/")
-    public String cafeInfo(@RequestParam("id") String id, Model model){
-        CafeDto cafeDto = cafeService.getCafe(Integer.parseInt(id));
-        //List<Cafe> cafeList = cafeService.getCafe(Integer.parseInt(id));
-        List<Cafe> sentList = (List<Cafe>) cafeService.getCafe(Integer.parseInt(id));
-
-        //  List<Sentence> sentList = sentService.getSentence(Integer.parseInt(id));
-
-
-   //     CafeAndSentDTO cafeAndSentDTO = new CafeAndSentDTO(cafeDto, sentList);
-       // model.addAttribute("dto", cafeAndSentDTO);
-
-
-        return "home";
+    @GetMapping("/")
+    public String home(Model model) {
+        List<CafeDto> cafeDtoList = cafeService.getCafeList();
+        model.addAttribute("cafeList",cafeDtoList);
+        return "home.html";
     }
 
+//    /* 세부정보화면*/
+//    @RequestMapping("/")
+//    public String cafeInfo(@RequestParam("id") String id, Model model){
+//        CafeDto cafeDto = cafeService.getCafe(Integer.parseInt(id));
+//        //List<Cafe> cafeList = (List<Cafe>) cafeService.getCafe(Integer.parseInt(id));
+//
+//
+//        model.addAttribute("cafe_dto", cafeDto);
+//
+//        return "detailPage";
+//    }
+
+//    @GetMapping("/home")
+//    public String home(Model model)
+//    {
+//        List<CafeDto> cafeDtoList = cafeService.getCafeList();
+//        model.addAttribute("cafeList",cafeDtoList);
+//        return "home.html";
+//    }
 
 }

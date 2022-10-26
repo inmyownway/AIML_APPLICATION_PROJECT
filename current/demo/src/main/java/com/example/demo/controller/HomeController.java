@@ -25,10 +25,10 @@ public class HomeController {
     }
 
     /* 지도화면 */
-    @GetMapping("/")
-    public String home() {
-        return "home";
-    }
+//    @GetMapping("/")
+//    public String home() {
+//        return "home";
+//    }
 
     /* 세부정보화면*/
     @RequestMapping("/more")
