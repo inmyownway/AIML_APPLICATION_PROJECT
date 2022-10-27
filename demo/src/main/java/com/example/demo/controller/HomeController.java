@@ -26,7 +26,9 @@ public class HomeController {
 
     /* 지도화면 */
     @GetMapping("/")
-    public String home() {
+    public String home(Model model) {
+        List<CafeDto> cafeDtoList = cafeService.getCafelist();
+        model.addAttribute("cafeList", cafeDtoList);
         return "home";
     }
 

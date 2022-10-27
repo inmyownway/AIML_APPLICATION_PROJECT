@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -120,6 +120,7 @@
             markers.push(marker); // 생성한 마커를 배열에 담는다.
             infoWindows.push(infoWindow); // 생성한 정보창을 배열에 담는다.
         }
+
         function getClickHandler(seq) {
             return function(e) {  // 마커를 클릭하는 부분
                 var marker = markers[seq], // 클릭한 마커의 시퀀스로 찾는다.
@@ -131,6 +132,7 @@
                 }
             }
         }
+
         for (var i=0, ii=markers.length; i<ii; i++) {
             console.log(markers[i] , getClickHandler(i));
             naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i)); // 클릭한 마커 핸들러
@@ -144,8 +146,51 @@
         <button class="btn" type="submit">더보기</button>
     </form>
 
+<!--- 정보창 내용 -->
+<p id="cafeid">값</p>
+<p id="cafename">값</p>
+<p id="cafeplace">값</p>
+<p id="cafekey1">값</p>
+<p id="cafekey2">값</p>
+<p id="cafekey3">값</p>
+
+<script th:inline="javascript">
+    //db -> js 배열
+    let cafeArr = new Array();
+    let cafeList = [[${cafeList}]];
+    let cafe = new Object();
+
+    cafeList.forEach(function(item){
+        cafe.id = item.cafe_id
+        cafe.place = item.cafe_place
+        cafe.name = item.cafe_name
+        cafe.key_num = item.key_num
+        cafeArr.push(cafe);
+    });
+
+    // 인덱스 변수
+    var i = 1;
+
+    // 위에 p태그 가져오기
+    var t1 = document.getElementById("cafeid"); //필터입력값 보여주기 위한 text
+    var t2 = document.getElementById("cafename"); //필터입력값 보여주기 위한 text
+    var t3 = document.getElementById("cafeplace"); //필터입력값 보여주기 위한 text
+    var t4 = document.getElementById("cafekey1"); //필터입력값 보여주기 위한 text
+    var t5 = document.getElementById("cafekey2"); //필터입력값 보여주기 위한 text
+    var t6 = document.getElementById("cafekey3"); //필터입력값 보여주기 위한 text
+
+    //p 태그 글자(innerText) 바꿔주기
+    t1.innerText = "id : " + cafeArr[i].id;
+    t2.innerText = cafeArr[i].name;
+    t3.innerText = cafeArr[i].place;
+    t4.innerText = "조용함 : " + cafeArr[i].key_num[0];
+    t5.innerText = "공부분위기 : " + cafeArr[i].key_num[1];
+    t6.innerText = "콘센트 : " + cafeArr[i].key_num[2];
+
+</script>
 <button type="button" class="btn btn-white" onClick="location.href='/search'"><i class="fa fa-search"></i></button>
 <button type="button" class="btn btn-link">로그인</button>
+
 </body>
 
 </html>

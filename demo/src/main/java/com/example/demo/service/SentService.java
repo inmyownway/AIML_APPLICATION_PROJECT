@@ -21,20 +21,6 @@ public class SentService {
         this.sentRepository = sentRepository;
     }
 
-    /*
-    public List<SentenceDto> getSentence(int id){
-        List<SentenceDto> sentList = new ArrayList<>();
-        List<Sentence> sentWrappers = sentRepository.findByCafe_id(id);
-        for(Sentence sent : sentWrappers){
-            SentenceDto sentenceDto = SentenceDto.builder()
-                    .cafe_id(sent.getCafe_id())
-                    .sen_key(sent.getSen_key())
-                    .key_num(sent.getKey_num())
-                    .build();
-            sentList.add(sentenceDto);
-        }
-        return sentList;
-    }*/
     public List<Sentence> getSentence(int id){
         return sentRepository.findByCafe_id(id);
     }
