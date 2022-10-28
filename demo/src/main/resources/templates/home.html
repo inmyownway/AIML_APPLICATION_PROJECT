@@ -142,7 +142,7 @@
 
 <!-- 더보기 버튼 (value = 누른 카페의 ID)-->
     <form id="form-id" action="/more" method="get">
-        <input type="hidden" class="input" name="id" value="1">
+        <input type="hidden" class="input" name="id" id="id" value="1">
         <button class="btn" type="submit">더보기</button>
     </form>
 
@@ -170,7 +170,7 @@
     });
 
     // 인덱스 변수
-    var i = 1;
+    var i = 2;
 
     // 위에 p태그 가져오기
     var t1 = document.getElementById("cafeid");
@@ -187,6 +187,9 @@
     t4.innerText = "조용함 : " + cafeArr[i].key_num[0];
     t5.innerText = "공부분위기 : " + cafeArr[i].key_num[1];
     t6.innerText = "콘센트 : " + cafeArr[i].key_num[2];
+
+    //세부정보페이지 연결
+    document.getElementById("id").value = cafeArr[i].id;
 
 </script>
 <button type="button" class="btn btn-white" onClick="location.href='/search'"><i class="fa fa-search"></i></button>
