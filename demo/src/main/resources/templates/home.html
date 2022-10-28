@@ -158,9 +158,10 @@
     //db -> js 배열
     let cafeArr = new Array();
     let cafeList = [[${cafeList}]];
-    let cafe = new Object();
 
     cafeList.forEach(function(item){
+        let cafe = new Object();
+
         cafe.id = item.cafe_id
         cafe.place = item.cafe_place
         cafe.name = item.cafe_name
@@ -172,12 +173,12 @@
     var i = 1;
 
     // 위에 p태그 가져오기
-    var t1 = document.getElementById("cafeid"); //필터입력값 보여주기 위한 text
-    var t2 = document.getElementById("cafename"); //필터입력값 보여주기 위한 text
-    var t3 = document.getElementById("cafeplace"); //필터입력값 보여주기 위한 text
-    var t4 = document.getElementById("cafekey1"); //필터입력값 보여주기 위한 text
-    var t5 = document.getElementById("cafekey2"); //필터입력값 보여주기 위한 text
-    var t6 = document.getElementById("cafekey3"); //필터입력값 보여주기 위한 text
+    var t1 = document.getElementById("cafeid");
+    var t2 = document.getElementById("cafename");
+    var t3 = document.getElementById("cafeplace");
+    var t4 = document.getElementById("cafekey1");
+    var t5 = document.getElementById("cafekey2");
+    var t6 = document.getElementById("cafekey3");
 
     //p 태그 글자(innerText) 바꿔주기
     t1.innerText = "id : " + cafeArr[i].id;
