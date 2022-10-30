@@ -18,10 +18,10 @@ public class CafeService {
     public CafeService(CafeRepository cafeRepository){
         this.cafeRepository = cafeRepository;
     }
+
     @Transactional
     public CafeDto getCafe(int id){
         Optional<Cafe> cafeWrapper = cafeRepository.findById(id);
-        // finall
         Cafe cafe = cafeWrapper.get();
 
         CafeDto cafeDto = CafeDto.builder()
@@ -35,9 +35,9 @@ public class CafeService {
 
         return cafeDto;
     }
-    @Transactional
-    public List<CafeDto> getCafeList(){
 
+    @Transactional
+    public List<CafeDto> getCafelist(){
         List<Cafe> cafes = cafeRepository.findAll();
         List<CafeDto> cafeDtoList = new ArrayList<>();
 
@@ -54,4 +54,7 @@ public class CafeService {
         }
         return cafeDtoList;
     }
+
+
 }
+

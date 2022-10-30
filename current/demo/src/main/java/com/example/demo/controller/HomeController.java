@@ -25,10 +25,12 @@ public class HomeController {
     }
 
     /* 지도화면 */
-//    @GetMapping("/")
-//    public String home() {
-//        return "home";
-//    }
+    @GetMapping("/")
+    public String home(Model model) {
+        List<CafeDto> cafeDtoList = cafeService.getCafelist();
+        model.addAttribute("cafeList", cafeDtoList);
+        return "home";
+    }
 
     /* 세부정보화면*/
     @RequestMapping("/more")
