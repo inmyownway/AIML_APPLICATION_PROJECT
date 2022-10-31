@@ -21,45 +21,49 @@
 <div class="contents">
     <!--- 검색창 -->
     <section class="mt-5 mb-5">
-        <form id="form-search" action="/search" method="get" class="search-bar m-3">
+        <form id="searchForm" action="/search" method="get" class="search-bar m-3">
             <label>검색어를 입력하세요</label>
             <div><input type="text" class="input" name="text"></div>
+
+            <!-- 필터 -->
+            <section class="m-3" >
+                <label>키워드를 선택하세요</label>
+                <div class="filter-wrapper d-flex flex-wrap">
+                    <div class="filter">
+                        <input type="checkbox" class="btn-check" id="check1" autocomplete="off" value="1" onchange="makeFilter(this);">
+                        <label class="btn btn-outline-secondary" for="check1">조용함</label>
+                    </div>
+                    <div class="filter">
+                        <input type="checkbox" class="btn-check" id="check2" autocomplete="off" value="2" onchange="makeFilter(this);">
+                        <label class="btn btn-outline-secondary" for="check2">공부하기좋은분위기</label>
+                    </div>
+                    <div class="filter">
+                        <input type="checkbox" class="btn-check" id="check3" autocomplete="off" value="3" onchange="makeFilter(this);">
+                        <label class="btn btn-outline-secondary" for="check3">콘센트</label>
+                    </div>
+                    <div class="filter">
+                        <input type="checkbox" class="btn-check" id="check4" autocomplete="off" value="4" onchange="makeFilter(this);">
+                        <label class="btn btn-outline-secondary" for="check4">자리편함</label>
+                    </div>
+                    <div class="filter">
+                        <input type="checkbox" class="btn-check" id="check5" autocomplete="off" value="5" onchange="makeFilter(this);">
+                        <label class="btn btn-outline-secondary" for="check5">공간넓음</label>
+                    </div>
+                    <div class="filter">
+                        <input type="checkbox" class="btn-check" id="check6" autocomplete="off" value="6" onchange="makeFilter(this);">
+                        <label class="btn btn-outline-secondary" for="check6">맛있는메뉴</label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 검색버튼 -->
+            <div class="mt-5">
+                <button class="btn btn-secondary mt-5 ms-3" type="submit">검색</button>
+            </div>
+
+            <input type="hidden",id="filter_val", name="filter_val">
         </form>
     </section>
-
-    <!-- 필터 -->
-    <section class="m-3" >
-        <label>키워드를 선택하세요</label>
-        <div class="filter-wrapper d-flex flex-wrap">
-            <div class="filter">
-                <input type="checkbox" class="btn-check" id="check1" autocomplete="off" value="1" onchange="makeFilter(this);">
-                <label class="btn btn-outline-secondary" for="check1">조용함</label>
-            </div>
-            <div class="filter">
-                <input type="checkbox" class="btn-check" id="check2" autocomplete="off" value="2" onchange="makeFilter(this);">
-                <label class="btn btn-outline-secondary" for="check2">공부하기좋은분위기</label>
-            </div>
-            <div class="filter">
-                <input type="checkbox" class="btn-check" id="check3" autocomplete="off" value="3" onchange="makeFilter(this);">
-                <label class="btn btn-outline-secondary" for="check3">콘센트</label>
-            </div>
-            <div class="filter">
-                <input type="checkbox" class="btn-check" id="check4" autocomplete="off" value="4" onchange="makeFilter(this);">
-                <label class="btn btn-outline-secondary" for="check4">자리편함</label>
-            </div>
-            <div class="filter">
-                <input type="checkbox" class="btn-check" id="check5" autocomplete="off" value="5" onchange="makeFilter(this);">
-                <label class="btn btn-outline-secondary" for="check5">공간넓음</label>
-            </div>
-            <div class="filter">
-                <input type="checkbox" class="btn-check" id="check6" autocomplete="off" value="6" onchange="makeFilter(this);">
-                <label class="btn btn-outline-secondary" for="check6">맛있는메뉴</label>
-            </div>
-        </div>
-    </section>
-    <div class="mt-5">
-        <button class="btn btn-secondary mt-5 ms-3">검색</button>
-    </div>
 </div>
 
 <br>
@@ -67,7 +71,8 @@
 
 <script>
     var filterArr = new Array(); //필터 내용을 저장하는 배열
-    var showFilterValue = document.getElementById("showFilter"); //필터입력값 보여주기 위한 text
+    var showFilterValue = document.getElementById("showFilter"); //필터입력값 보여주기 위한 text    var result = document.getElementById("filter_val");
+
 
     //필터 내용을 저장하는 함수
     function makeFilter(target){
@@ -86,6 +91,7 @@
 
         showFilterValue.value = filterArr; // textBox에 필터 배열 추가
         console.log("필터입력값 출력 : "+filterArr);
+        result.value = filterArr.join(",");
     }
 </script>
 </body>

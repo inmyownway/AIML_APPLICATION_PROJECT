@@ -12,36 +12,36 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/all.min.css" integrity="sha512-6c4nX2tn5KbzeBJo9Ywpa0Gkt+mzCzJBrE1RB6fmpcsoN+b/w/euwIMuQKNyUoU/nToKN3a8SgNOtPrbW12fug==" crossorigin="anonymous">
 </head>
 <body>
-    <!-- Responsive navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><hr class="dropdown-divider" /></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!-- Page content-->
+<!-- Responsive navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <div class="text-center mt-5">
-            <h1>홍대 카공하기좋은 카페 추천 웹</h1>
-            <p class="lead">카페 클릭시 정보를 볼수있습니다.</p>
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </div>
-    <div id="map" style="width:100%;height:75vh; margin: 0 auto; float : left"></div>
+</nav>
+<!-- Page content-->
+<div class="container">
+    <div class="text-center mt-5">
+        <h1>홍대 카공하기좋은 카페 추천 웹</h1>
+        <p class="lead">카페 클릭시 정보를 볼수있습니다.</p>
+    </div>
+</div>
+<div id="map" style="width:100%;height:75vh; margin: 0 auto; float : left"></div>
 </body>
 
 <!-- Bootstrap core JS-->
@@ -71,17 +71,55 @@
             center: new naver.maps.LatLng( 37.556020559922431,126.92293967566906),
             zoom: 18
         });
+        var infowindow = new naver.maps.InfoWindow();
 
-        // var marker = new naver.maps.Marker({
-        //     map: map,
-        //     title: "홍대 투썸플레이스",
-        //     position: new naver.maps.LatLng(37.558061977615345, 126.92395616899384),
-        //     icon: {
-        //         content: '<img src="resources/img/chu1.png" alt="" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: none; max-height: none; -webkit-user-select: none; position: absolute; width: 40px; height: 55px; left: 0px; top: 0px;">',                    size: new naver.maps.Size(32, 32),
-        //         anchor: new naver.maps.Point(0, 0)
-        //
-        //     }
-        // });
+        function onSuccessGeolocation(position) {
+            var location = new naver.maps.LatLng(position.coords.latitude,
+                position.coords.longitude);
+
+            map.setCenter(location); // 얻은 좌표를 지도의 중심으로 설정합니다.
+            map.setZoom(17); // 지도의 줌 레벨을 변경합니다.
+
+          // infowindow.setContent('<div style="padding:20px;">' + '현재위치' + '</div>');
+
+            var marker = new naver.maps.Marker({
+                map: map,
+                icon:{
+                    content: '<img src="assets/current.png" alt="" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: 30px; max-height: 30px; -webkit-user-select: none; position: absolute; width: 40px; height: 55px; left: 0px; top: 0px;">',
+                    size: new naver.maps.Size(32, 32)},
+                title: "내 위치", // 지역구 이름
+                position: new naver.maps.LatLng(position.coords.latitude , position.coords.longitude) // 지역구의 위도 경도 넣기
+            });
+            markers.push(marker);
+            //infowindow.open(map, location);
+
+            console.log('Coordinates: ' + location.toString());
+        }
+
+
+        function onErrorGeolocation() {
+            var center = map.getCenter();
+
+            infowindow.setContent('<div style="padding:20px;">' +
+                '<h5 style="margin-bottom:5px;color:#f00;">Geolocation failed!</h5>'+ "latitude: "+ center.lat() +"<br />longitude: "+ center.lng() +'</div>');
+
+            infowindow.open(map, center);
+        }
+
+        $(window).on("load", function() {
+            if (navigator.geolocation) {
+                /**
+                 * navigator.geolocation 은 Chrome 50 버젼 이후로 HTTP 환경에서 사용이 Deprecate 되어 HTTPS 환경에서만 사용 가능 합니다.
+                 * http://localhost 에서는 사용이 가능하며, 테스트 목적으로, Chrome 의 바로가기를 만들어서 아래와 같이 설정하면 접속은 가능합니다.
+                 * chrome.exe --unsafely-treat-insecure-origin-as-secure="http://example.com"
+                 */
+                navigator.geolocation.getCurrentPosition(onSuccessGeolocation, onErrorGeolocation);
+            } else {
+                var center = map.getCenter();
+                infowindow.setContent('<div style="padding:20px;"><h5 style="margin-bottom:5px;color:#f00;">Geolocation not supported</h5></div>');
+                infowindow.open(map, center);
+            }
+        });
 
         /* 정보창 */
         cafe_list =[
@@ -103,18 +141,21 @@
             });
 
             /* 정보창 */
-            for(var j=0;j<4;j++)
+            for(var j=0;j<3;j++)
             {
-                if (areaArr[i].location == cafe_list[j][0])
+                if (areaArr[i].location == cafeArr[j].name)
                 {
-                    var temp1=cafe_list[j][1]
-                    var temp2=cafe_list[j][2]
-                    var temp3=cafe_list[j][3]
+                   var cname = cafeArr[j].name;
+                   var cplace = cafeArr[j].place;
+                   var key1 =  cafeArr[j].key_num[0]
                 }
             }
             var infoWindow = new naver.maps.InfoWindow({
-                anchorSize: new naver.maps.Size(-300, -400),
-                content: '<div style="width:800px;text-align:center;padding:10px;"><b>' + areaArr[i].location + '</b><br> 조용함 : ' + temp1  +'<br> 콘센트이용 : ' +temp2 +'<br> 공부하기좋은 분위기 : ' +temp3+'  </div>'
+                anchorSize: new naver.maps.Size(0, 0),
+                content: '<div style="width:600px;text-align:center;padding:10px;">' +
+                    '<b> 카페이름: </b>'+cname + '<br><b> 카페주소: </b>'+ cplace +
+                     '<br><b> 조용함: </b>' + key1 +
+                   ' </div>'
             });
             // 클릭했을 때 띄워줄 정보 HTML 작성
             markers.push(marker); // 생성한 마커를 배열에 담는다.
@@ -141,10 +182,11 @@
 </script>
 
 <!-- 더보기 버튼 (value = 누른 카페의 ID)-->
-    <form id="form-id" action="/more" method="get">
-        <input type="hidden" class="input" name="id" id="id" value="1">
-        <button class="btn" type="submit">더보기</button>
-    </form>
+<form id="form-id" action="/more" method="get">
+    <input type="hidden" class="input" name="id" id="id" value="1">
+    <button class="btn" type="submit">더보기</button>
+</form>
+    <button id="btn_loc" onclick="curLocation">내위치로</button>
 
 <!--- 정보창 내용 -->
 <p id="cafeid">값</p>
@@ -170,24 +212,24 @@
     });
 
     // 인덱스 변수
-    var i = 2;
 
-    // 위에 p태그 가져오기
-    var t1 = document.getElementById("cafeid");
-    var t2 = document.getElementById("cafename");
-    var t3 = document.getElementById("cafeplace");
-    var t4 = document.getElementById("cafekey1");
-    var t5 = document.getElementById("cafekey2");
-    var t6 = document.getElementById("cafekey3");
+    for(var i =0;i<3;i++) {
+        // 위에 p태그 가져오기
+        var t1 = document.getElementById("cafeid");
+        var t2 = document.getElementById("cafename");
+        var t3 = document.getElementById("cafeplace");
+        var t4 = document.getElementById("cafekey1");
+        var t5 = document.getElementById("cafekey2");
+        var t6 = document.getElementById("cafekey3");
 
-    //p 태그 글자(innerText) 바꿔주기
-    t1.innerText = "id : " + cafeArr[i].id;
-    t2.innerText = cafeArr[i].name;
-    t3.innerText = cafeArr[i].place;
-    t4.innerText = "조용함 : " + cafeArr[i].key_num[0];
-    t5.innerText = "공부분위기 : " + cafeArr[i].key_num[1];
-    t6.innerText = "콘센트 : " + cafeArr[i].key_num[2];
-
+        //p 태그 글자(innerText) 바꿔주기
+        t1.innerText = "id : " + cafeArr[i].id;
+        t2.innerText = cafeArr[i].name;
+        t3.innerText = cafeArr[i].place;
+        t4.innerText = "조용함 : " + cafeArr[i].key_num[0];
+        t5.innerText = "공부분위기 : " + cafeArr[i].key_num[1];
+        t6.innerText = "콘센트 : " + cafeArr[i].key_num[2];
+    }
     //세부정보페이지 연결
     document.getElementById("id").value = cafeArr[i].id;
 

@@ -1,7 +1,6 @@
 package com.example.demo.dto;
 
-import com.example.demo.db.Sentence;
-import lombok.Builder;
+import com.example.demo.db.Sentence;;
 import lombok.Getter;
 import lombok.Setter;
 
