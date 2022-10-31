@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>지도화면(home)입니다</title>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=pjyeb54o2p"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="crossorigin="anonymous"></script>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/all.min.css" integrity="sha512-6c4nX2tn5KbzeBJo9Ywpa0Gkt+mzCzJBrE1RB6fmpcsoN+b/w/euwIMuQKNyUoU/nToKN3a8SgNOtPrbW12fug==" crossorigin="anonymous">
+</head>
+<body>
+<!-- Responsive navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Page content-->
+<div class="container">
+    <div class="text-center mt-5">
+        <h1>홍대 카공하기좋은 카페 추천 웹</h1>
+        <p class="lead">카페 클릭시 정보를 볼수있습니다.</p>
+        <h1 class="lead">더보기 클릭시 자세한 정보를 볼수있습니다.</h1>
+        <form id="form-id" action="/more" method="get">
+            <input type="hidden" class="input" name="id" id="id" value="">
+            <button class="btn" type="submit">더보기</button>
+        </form>
+    </div>
+</div>
+<div id="map" style="width:100%;height:75vh; margin: 0 auto; float : left"></div>
+</body>
+
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+
+<script type="text/javascript">
+    $(function() {
+        initMap();
+    });
+
+    function initMap() {
+        var areaArr = new Array();  // 지역을 담는 배열 ( 지역명/위도경도 )
+        areaArr.push(
+            /*지역구 이름*/			/*위도*/					/*경도*/
+            {location : '스타벅스 홍대역8번출구점' , lat : '37.55602055992243' , lng : '126.922939675669061'},
+            {location : '스타벅스 홍대공항철도역점' , lat : '37.55748838221418' , lng : '126.92519320428961'},
+            {location : '엔젤리너스 L7홍대점' , lat : '37.55567500441952' , lng : '126.92153667791773 '},
+            {location : '홍대 투썸플레이스' , lat : '37.558061977615345' , lng : '126.92395616899384'},
+            {location : '커피빈 홍대역8번출구점' , lat: '37.556776463845345',lng: '126.92498737097256 '},
+            {location : '홍대 앳커피',lat:'37.5498732347229',lng:'126.922668185082'},
+            {location : '홍대 작당모의',lat:'37.5606085859485',lng:'126.925417012996'},
+            {location : '홍대 아벨롭',lat:'37.5544654855325',lng:'126.918841400479'},
+            {location : '홍대 피오니',lat:'37.5500851944722',lng:'126.919764712297'},
+            {location : '홍대 모센즈스위트',lat:'37.5498355858466',lng:'126.920784708281'},
+            {location : '홍대 아오이토리,',lat:'37.5547753182732',lng:'126.929469982132'},
+            {location : '홍대 샌드커피',lat:'37.5592711660529',lng:'126.924174847151'},
+            {location : '홍대 카페 공명',lat:'37.5598714945494',lng:'126.926300212385'},
+            {location : '홍대 도식화',lat:'37.5497882345776',lng:'126.921792717037'},
+        );
+        let markers = new Array(); // 마커 정보를 담는 배열
+        let infoWindows = new Array(); // 정보창을 담는 배열
+
+        var map = new naver.maps.Map('map', {
+            center: new naver.maps.LatLng( 37.556020559922431,126.92293967566906),
+            zoom: 18
+        });
+        var infowindow = new naver.maps.InfoWindow();
+
+        function onSuccessGeolocation(position) {
+            var location = new naver.maps.LatLng(position.coords.latitude,
+                position.coords.longitude);
+
+            map.setCenter(location); // 얻은 좌표를 지도의 중심으로 설정합니다.
+            map.setZoom(17); // 지도의 줌 레벨을 변경합니다.
+
+          // infowindow.setContent('<div style="padding:20px;">' + '현재위치' + '</div>');
+
+            var marker = new naver.maps.Marker({
+                map: map,
+                icon:{
+                    content: '<img src="assets/current.png" alt="" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: 30px; max-height: 30px; -webkit-user-select: none; position: absolute; width: 40px; height: 55px; left: 0px; top: 0px;">',
+                    size: new naver.maps.Size(32, 32)},
+                title: "내 위치", // 지역구 이름
+                position: new naver.maps.LatLng(position.coords.latitude , position.coords.longitude) // 지역구의 위도 경도 넣기
+            });
+            markers.push(marker);
+            //infowindow.open(map, location);
+
+            console.log('Coordinates: ' + location.toString());
+        }
+
+
+        function onErrorGeolocation() {
+            var center = map.getCenter();
+
+            infowindow.setContent('<div style="padding:20px;">' +
+                '<h5 style="margin-bottom:5px;color:#f00;">Geolocation failed!</h5>'+ "latitude: "+ center.lat() +"<br />longitude: "+ center.lng() +'</div>');
+
+            infowindow.open(map, center);
+        }
+
+        $(window).on("load", function() {
+            if (navigator.geolocation) {
+                /**
+                 * navigator.geolocation 은 Chrome 50 버젼 이후로 HTTP 환경에서 사용이 Deprecate 되어 HTTPS 환경에서만 사용 가능 합니다.
+                 * http://localhost 에서는 사용이 가능하며, 테스트 목적으로, Chrome 의 바로가기를 만들어서 아래와 같이 설정하면 접속은 가능합니다.
+                 * chrome.exe --unsafely-treat-insecure-origin-as-secure="http://example.com"
+                 */
+                navigator.geolocation.getCurrentPosition(onSuccessGeolocation, onErrorGeolocation);
+            } else {
+                var center = map.getCenter();
+                infowindow.setContent('<div style="padding:20px;"><h5 style="margin-bottom:5px;color:#f00;">Geolocation not supported</h5></div>');
+                infowindow.open(map, center);
+            }
+        });
+
+        /* 정보창 */
+
+        for (var i = 0; i < areaArr.length; i++) {
+            // 지역을 담은 배열의 길이만큼 for문으로 마커와 정보창을 채워주자 !
+            var marker = new naver.maps.Marker({
+                map: map,
+                icon:{
+                    content: '<img src="assets/chu1.png" alt="" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: 30px; max-height: 30px; -webkit-user-select: none; position: absolute; width: 40px; height: 55px; left: 0px; top: 0px;">',
+                    size: new naver.maps.Size(32, 32)},
+                title: areaArr[i].location, // 지역구 이름
+                position: new naver.maps.LatLng(areaArr[i].lat , areaArr[i].lng) // 지역구의 위도 경도 넣기
+            });
+
+            /* 정보창 */
+            for(var j=0;j<3;j++)
+            {
+                if (areaArr[i].location == cafeArr[j].name)
+                {
+                   var cname = cafeArr[j].name;
+                   var cplace = cafeArr[j].place;
+                   var key1 =  cafeArr[j].key_num[0];
+                   var key2 = cafeArr[j].key_num[1];
+                   var key3 = cafeArr[j].key_num[2];
+
+                }
+            }
+            var infoWindow = new naver.maps.InfoWindow({
+                anchorSize: new naver.maps.Size(0, 0),
+                content: '<div style="width:600px;text-align:center;padding:10px;">' +
+                    '<b> 카페이름: </b>'+cname + '<br><b> 카페주소: </b>'+ cplace +
+                     '<br><b> 조용함: </b>' + key1 +
+                    '<br><b> 콘센트 이용: </b>' + key2 +
+                    '<br><b> 공부하기 좋은 분위기 </b>' + key3 +
+                    ' </div>'
+            });
+            // 클릭했을 때 띄워줄 정보 HTML 작성
+            markers.push(marker); // 생성한 마커를 배열에 담는다.
+            infoWindows.push(infoWindow); // 생성한 정보창을 배열에 담는다.
+        }
+
+        function getClickHandler(seq) {
+            return function(e) {
+                document.getElementById("id").value = cafeArr[seq].id;
+
+                // 마커를 클릭하는 부분
+                var marker = markers[seq], // 클릭한 마커의 시퀀스로 찾는다.
+                    infoWindow = infoWindows[seq]; // 클릭한 마커의 시퀀스로 찾는다
+                if (infoWindow.getMap()) {
+                    infoWindow.close();
+                } else {
+                    infoWindow.open(map, marker); // 표출
+                }
+            }
+        }
+
+        for (var i=0, ii=markers.length; i<ii; i++) {
+            console.log(markers[i] , getClickHandler(i));
+            naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i)); // 클릭한 마커 핸들러
+        }
+    }
+</script>
+
+<!-- 더보기 버튼 (value = 누른 카페의 ID)-->
+
+    <button id="btn_loc" onclick="curLocation">내위치로</button>
+
+<!--- 정보창 내용 -->
+<p id="cafeid">값</p>
+<p id="cafename">값</p>
+<p id="cafeplace">값</p>
+<p id="cafekey1">값</p>
+<p id="cafekey2">값</p>
+<p id="cafekey3">값</p>
+
+<script th:inline="javascript">
+    //db -> js 배열
+    let cafeArr = new Array();
+    let cafeList = [[${cafeList}]];
+
+    cafeList.forEach(function(item){
+        let cafe = new Object();
+
+        cafe.id = item.cafe_id
+        cafe.place = item.cafe_place
+        cafe.name = item.cafe_name
+        cafe.key_num = item.key_num
+        cafeArr.push(cafe);
+    });
+
+    // 인덱스 변수
+
+    for(var i =0;i<3;i++) {
+        // 위에 p태그 가져오기
+        var t1 = document.getElementById("cafeid");
+        var t2 = document.getElementById("cafename");
+        var t3 = document.getElementById("cafeplace");
+        var t4 = document.getElementById("cafekey1");
+        var t5 = document.getElementById("cafekey2");
+        var t6 = document.getElementById("cafekey3");
+
+        //p 태그 글자(innerText) 바꿔주기
+        t1.innerText = "id : " + cafeArr[i].id;
+        t2.innerText = cafeArr[i].name;
+        t3.innerText = cafeArr[i].place;
+        t4.innerText = "조용함 : " + cafeArr[i].key_num[0];
+        t5.innerText = "공부분위기 : " + cafeArr[i].key_num[1];
+        t6.innerText = "콘센트 : " + cafeArr[i].key_num[2];
+    }
+    //세부정보페이지 연결
+   // document.getElementById("id").value = cafeArr[i].id;
+
+</script>
+<button type="button" class="btn btn-white" onClick="location.href='/search'"><i class="fa fa-search"></i></button>
+<button type="button" class="btn btn-link">로그인</button>
+
+</body>
+
+</html>
