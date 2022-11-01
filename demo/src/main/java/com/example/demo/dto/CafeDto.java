@@ -25,12 +25,15 @@ public class CafeDto {
                 .key1(key_num.get(0))
                 .key2(key_num.get(1))
                 .key3(key_num.get(2))
+                .key4(key_num.get(3))
+                .key5(key_num.get(4))
+                .key6(key_num.get(5))
                 .build();
         return cafe;
     }
 
     @Builder
-    public CafeDto(int cafe_id, String cafe_name, String cafe_place, int key1, int key2, int key3){
+    public CafeDto(int cafe_id, String cafe_name, String cafe_place, int key1, int key2, int key3, int key4, int key5, int key6){
         key_num = new ArrayList<>();
         this.cafe_id = cafe_id;
         this.cafe_name = cafe_name;
@@ -38,5 +41,8 @@ public class CafeDto {
         this.key_num.add(key1);
         this.key_num.add(key2);
         this.key_num.add(key3);
+        this.key_num.add(key4);
+        this.key_num.add(key5);
+        this.key_num.add(key6);
     }
 }

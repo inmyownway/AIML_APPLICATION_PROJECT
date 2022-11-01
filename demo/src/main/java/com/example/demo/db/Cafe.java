@@ -27,4 +27,7 @@ public class Cafe {
     private Integer key1;
     private Integer key2;
     private Integer key3;
+    private Integer key4;
+    private Integer key5;
+    private Integer key6;
 }
