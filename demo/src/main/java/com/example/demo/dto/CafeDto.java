@@ -3,8 +3,10 @@ package com.example.demo.dto;
 import com.example.demo.db.Cafe;
 import lombok.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 //Controller와 Service 사이에서 데이터를 주고 받는 DTO
 @Getter
@@ -33,7 +35,7 @@ public class CafeDto {
     }
 
     @Builder
-    public CafeDto(int cafe_id, String cafe_name, String cafe_place, int key1, int key2, int key3, int key4, int key5, int key6){
+    public CafeDto(int cafe_id, String cafe_name, String cafe_place, int key1, int key2, int key3, int key4, int key5, int key6) {
         key_num = new ArrayList<>();
         this.cafe_id = cafe_id;
         this.cafe_name = cafe_name;

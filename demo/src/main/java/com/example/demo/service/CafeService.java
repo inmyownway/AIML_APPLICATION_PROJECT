@@ -31,6 +31,9 @@ public class CafeService {
                 .key1(cafe.getKey1())
                 .key2(cafe.getKey2())
                 .key3(cafe.getKey3())
+                .key4(cafe.getKey4())
+                .key5(cafe.getKey5())
+                .key6(cafe.getKey6())
                 .build();
 
         return cafeDto;
@@ -49,6 +52,9 @@ public class CafeService {
                     .key1(cafe.getKey1())
                     .key2(cafe.getKey2())
                     .key3(cafe.getKey3())
+                    .key4(cafe.getKey4())
+                    .key5(cafe.getKey5())
+                    .key6(cafe.getKey6())
                     .build();
             cafeDtoList.add(cafeDto);
         }
