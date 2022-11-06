@@ -47,11 +47,11 @@ public class HomeController {
     }
 
     @GetMapping("/search/result")
-    public String search(@RequestParam("text") String text, @RequestParam("filter_val") String filter, Model model){
-        //text = "스타벅스"
-        //filter = "1"
-        //filter 선택 안돼있으면 1,2,3,4,5,6으로
-        //model.addAttribute("searchList",  cafeService.searchCafes(text, 필터는 어케하징));
+    public String search(@RequestParam(value = "text", defaultValue = "") String text,
+                         @RequestParam(value = "filters", defaultValue = "111111") String filter, Model model){
+        //필터 선택안하면 111111으로 처리
+        //하면 한것만 1인것들 검색
+        model.addAttribute("searchResult",  cafeService.getSearchList(text));
         return "searchList";
     }
 }

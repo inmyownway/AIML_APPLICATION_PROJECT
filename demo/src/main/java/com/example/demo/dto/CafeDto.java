@@ -17,7 +17,6 @@ public class CafeDto {
     private int cafe_id;
     private String cafe_name;
     private String cafe_place;
-
     private List<Integer> key_num;
     public Cafe toEntity(){
         Cafe cafe = Cafe.builder()

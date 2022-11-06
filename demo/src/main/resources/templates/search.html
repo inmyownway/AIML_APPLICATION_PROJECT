@@ -20,8 +20,8 @@
 
 <div class="contents">
     <!--- 검색창 -->
-    <section class="mt-5 mb-5">
-        <form id="searchForm" action="/search" method="get" class="search-bar m-3">
+    <section class="mt-5 mb-5" id="s">
+        <form id="searchForm" action="/search/result" method="get" class="search-bar m-3">
             <label>검색어를 입력하세요</label>
             <div><input type="text" class="input" name="text"></div>
 
@@ -55,44 +55,46 @@
                     </div>
                 </div>
             </section>
-
             <!-- 검색버튼 -->
-            <div class="mt-5">
+            <div class="mt-5" id="search_btn">
+                <input type="hidden" id="filters" name="filters" value="111111">
                 <button class="btn btn-secondary mt-5 ms-3" type="submit">검색</button>
             </div>
 
-            <input type="hidden",id="filter_val", name="filter_val">
         </form>
     </section>
 </div>
-
+<!---필터확인용, 기능과 무관함
 <br>
-필터입력값 : <input type="text" id="showFilter"/> <!--필터확인용, 기능과 무관함 -->
-
+필터입력값 : <input type="text" id="showFilter"/>
+-->
 <script>
-    var filterArr = new Array(); //필터 내용을 저장하는 배열
-    var showFilterValue = document.getElementById("showFilter"); //필터입력값 보여주기 위한 text    var result = document.getElementById("filter_val");
-
+    var filterArr = ["0","0","0","0","0","0"]; //필터 내용을 저장하는 배열
+    //var showFilterValue = document.getElementById("showFilter"); //필터입력값 보여주기 위한 text
+    var result = document.getElementById('filters');
 
     //필터 내용을 저장하는 함수
     function makeFilter(target){
-        var filterVal = target.value; //선택된 checkbox의 value를 받아옵니다
-        var confirmCheck = target.checked; //선택된 checkbox의 check 여부를 받아옵니다
+        let filterVal = target.value; //선택된 checkbox의 value를 받아옵니다
+        let confirmCheck = target.checked; //선택된 checkbox의 check 여부를 받아옵니다
         console.log("필터 선택값 : "+filterVal);
         console.log("선택여부 : "+confirmCheck);
 
         if(confirmCheck == true){
             console.log("check");
-            filterArr.push(filterVal); // check value filter 배열에 입력
+            //filterArr.push(filterVal); // check value filter 배열에 입력
+            filterArr[filterVal-1] = 1; // check value filter 배열에 입력
 
         }else{
-            filterArr.splice(filterArr.indexOf(filterVal), 1); //배열내용 삭제: 배열.splice(삭제하고싶은 요소의 index, 삭제하고자하는 갯수)
+            //filterArr.splice(filterArr.indexOf(filterVal), 1); //배열내용 삭제: 배열.splice(삭제하고싶은 요소의 index, 삭제하고자하는 갯수)
+            filterArr[filterVal-1] = 0;
         }
 
-        showFilterValue.value = filterArr; // textBox에 필터 배열 추가
+        //showFilterValue.value = filterArr; // textBox에 필터 배열 추가
         console.log("필터입력값 출력 : "+filterArr);
-        result.value = filterArr.join(",");
+        result.value = filterArr.join("");
     }
+
 </script>
 </body>
 </html>

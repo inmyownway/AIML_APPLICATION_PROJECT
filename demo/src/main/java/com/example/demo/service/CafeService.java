@@ -42,8 +42,32 @@ public class CafeService {
     @Transactional
     public List<CafeDto> getCafelist(){
         List<Cafe> cafes = cafeRepository.findAll();
-        List<CafeDto> cafeDtoList = new ArrayList<>();
 
+        List<CafeDto> cafeDtoList = new ArrayList<>();
+        for(Cafe cafe : cafes){
+            CafeDto cafeDto = CafeDto.builder()
+                    .cafe_id(cafe.getCafe_id())
+                    .cafe_name(cafe.getCafe_name())
+                    .cafe_place(cafe.getCafe_place())
+                    .key1(cafe.getKey1())
+                    .key2(cafe.getKey2())
+                    .key3(cafe.getKey3())
+                    .key4(cafe.getKey4())
+                    .key5(cafe.getKey5())
+                    .key6(cafe.getKey6())
+                    .build();
+            cafeDtoList.add(cafeDto);
+        }
+        return cafeDtoList;
+    }
+
+    @Transactional
+    public List<CafeDto> getSearchList(String name){
+        //String [] f = filters.split("");
+        //List<Cafe> cafes = cafeRepository.getSearchList(name, f[0],f[1],f[2],f[3],f[4],f[5]);
+        List<Cafe> cafes = cafeRepository.findByCafe_nameContaining(name);
+
+        List<CafeDto> cafeDtoList = new ArrayList<>();
         for(Cafe cafe : cafes){
             CafeDto cafeDto = CafeDto.builder()
                     .cafe_id(cafe.getCafe_id())
