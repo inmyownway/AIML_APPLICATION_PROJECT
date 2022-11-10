@@ -90,6 +90,8 @@
         cafe.place = item.cafe_place
         cafe.name = item.cafe_name
         cafe.key_num = item.key_num
+
+
         cafeArr.push(cafe);
     });
 
@@ -121,7 +123,77 @@
             // {location : '홍대 투썸플레이스' , lat : '37.558061977615345' , lng : '126.92395616899384'},
             // {location : '커피빈 홍대역8번출구점' , lat: '37.556776463845345',lng: '126.92498737097256 '},
 
+            {location : '도식화',lat:'37.5512291674425',lng:'126.915342505913'},
+            {location : '도식화',lat:'37.5580627655669',lng:'126.929283196897'},
+            {location : '도식화',lat:'37.5492304330819',lng:'126.917434904257'},
+            {location : '도식화',lat:'37.5479140756509',lng:'126.923315911128'},
+            {location : '도식화',lat:'37.5478957029264',lng:'126.917190362476'},
+            {location : '도식화',lat:'37.547693524246',lng:'126.917713619072'},
+            {location : '도식화',lat:'37.5488300965598',lng:'126.917190362476'},
+            {location : '도식화',lat:'37.5478957029264',lng:'126.922450970715'},
+            {location : '도식화',lat:'37.5473162154361',lng:'126.922690177234'},
+            {location : '도식화',lat:'37.5515411134987',lng:'126.921096037489'},
+
+            {location : '도식화',lat:'37.551347497484',lng:'126.922058388556'},
+            {location : '도식화',lat:'37.5492243732318',lng:'126.920419383003'},
+            {location : '도식화',lat:'37.5494298799352',lng:'126.921615197284'},
+            {location : '도식화',lat:'37.5511805964953',lng:'126.920250155629'},
+            {location : '도식화',lat:'37.5481796265553',lng:'126.922665974076'},
+            {location : '도식화',lat:'37.548552950744',lng:'126.917403965922'},
+             {location : '도식화',lat:'37.5478957029264',lng:'126.922146248597'},
+            {location : '도식화',lat:',37.5480427837486',lng:'126.919320216476'},
+            {location : '도식화',lat:'37.5472344928949',lng:'126.917190362476'},
+            {location : '도식화',lat:'37.545169596296',lng:'126.914100662532'},
+
+            {location : '도식화',lat:'37.547223060744',lng:'126.918287296153'},
+            {location : '도식화',lat:'37.5497489457886',lng:'126.922880610497'},
+            {location : '도식화',lat:'37.5472577971992',lng:'126.917837103991'},
+            {location : '도식화',lat:'37.5511933100314',lng:'126.921881669256'},
+            {location : '도식화',lat:'37.549699608115',lng:'126.919957731837'},
+            {location : '도식화',lat:'37.5462777501329',lng:'126.913874316815'},
+            {location : '도식화',lat:'37.5462777501329',lng:'126.913874316815'},
+            {location : '도식화',lat:'37.5463813420495',lng:'126.918019121351'},
+            {location : '도식화',lat:'37.5490990328558',lng:'126.918031761543'},
+            {location : '도식화',lat:'37.5503550144727',lng:'126.919987585685'},
+
+
+            {location : '도식화',lat:'37.552184839072',lng:'126.920636800506'},
+            {location : '도식화',lat:'37.5552687128652',lng:'126.928584503751'},
+            {location : '도식화',lat:'37.5493038675519',lng:'126.928584503751'},
+            {location : '도식화',lat:'37.5493038675519',lng:'126.919659854608'},
+            {location : '도식화',lat:'37.5573689701965',lng:'126.928787574736'},
+            {location : '도식화',lat:'37.5618472946461',lng:'126.92820868228'},
+            {location : '도식화',lat:'37.5497679403446',lng:'126.921352980047'},
+            {location : '도식화',lat:'37.5497942367002',lng:'126.922286222388'},
+            {location : '도식화',lat:'37.5498732347229',lng:'126.922668185082'},
+            {location : '도식화',lat:'37.592887877547',lng:'127.141959285175'},
+
+            {location : '도식화',lat:'37.5481616020158',lng:'126.921430712861'},
+            {location : '도식화',lat:'37.5458669613769',lng:'126.921600709469'},
+            {location : '도식화',lat:'37.5518419835012',lng:'126.919931222832'},
+            {location : '도식화',lat:'37.5477478250496',lng:'126.91884279986'},
+            {location : '도식화',lat:'37.5467374852224',lng:'126.917213257312'},
+            {location : '도식화',lat:'37.5561130617043',lng:'126.923446601456'},
+            {location : '도식화',lat:'37.548752100984',lng:'126.919402547874'},
+            {location : '도식화',lat:'37.5490889627418,',lng:'126.921646221657'},
+            {location : '도식화',lat:'37.5461389190988',lng:'126.922063811817'},
+            {location : '도식화',lat:'37.5498156376086',lng:'126.918611738626'},
+
+
+            {location : '도식화',lat:'37.5467189339352',lng:'126.914694559649'},
+            {location : '도식화',lat:'37.5484577443971',lng:'126.920867304116'},
+            {location : '도식화',lat:'37.550483642878',lng:'126.920872857597'},
+            {location : '도식화',lat:'37.5458450814854',lng:'126.927694560914'},
+            {location : '도식화',lat:'37.5502168193782,',lng:'126.919483920958'},
+            {location : '도식화',lat:'37.5462838392978',lng:'126.914442257195'},
+            {location : '도식화',lat:'37.5472275065255',lng:'126.919512937021'},
+
+
+
+
+
         );
+
         let markers = new Array(); // 마커 정보를 담는 배열
         let infoWindows = new Array(); // 정보창을 담는 배열
 
@@ -138,7 +210,7 @@
             map.setCenter(location); // 얻은 좌표를 지도의 중심으로 설정합니다.
             map.setZoom(17); // 지도의 줌 레벨을 변경합니다.
 
-          // infowindow.setContent('<div style="padding:20px;">' + '현재위치' + '</div>');
+            // infowindow.setContent('<div style="padding:20px;">' + '현재위치' + '</div>');
 
             var marker = new naver.maps.Marker({
                 map: map,
@@ -197,14 +269,14 @@
             {
                 if (areaArr[i].location == cafeArr[j].name)
                 {
-                   var cname = cafeArr[j].name;
-                   // var cplace = cafeArr[j].place;
-                   // var key1 =  cafeArr[j].key_num[0];
-                   // var key2 = cafeArr[j].key_num[1];
-                   // var key3 = cafeArr[j].key_num[2];
-                   // var key4 = cafeArr[j].key_num[3];
-                   // var key5 = cafeArr[j].key_num[4];
-                   // var key6 = cafeArr[j].key_num[5];
+                    var cname = cafeArr[j].name;
+                    // var cplace = cafeArr[j].place;
+                    // var key1 =  cafeArr[j].key_num[0];
+                    // var key2 = cafeArr[j].key_num[1];
+                    // var key3 = cafeArr[j].key_num[2];
+                    // var key4 = cafeArr[j].key_num[3];
+                    // var key5 = cafeArr[j].key_num[4];
+                    // var key6 = cafeArr[j].key_num[5];
                 }
             }
 
@@ -228,6 +300,7 @@
             markers.push(marker); // 생성한 마커를 배열에 담는다.
             infoWindows.push(infoWindow); // 생성한 정보창을 배열에 담는다.
         }
+
 
         function getClickHandler(seq) {
             return function(e) {

@@ -17,6 +17,9 @@ public class CafeDto {
     private int cafe_id;
     private String cafe_name;
     private String cafe_place;
+    private double cafe_lat;
+    private double cafe_lng;
+
     private List<Integer> key_num;
     public Cafe toEntity(){
         Cafe cafe = Cafe.builder()
@@ -29,16 +32,23 @@ public class CafeDto {
                 .key4(key_num.get(3))
                 .key5(key_num.get(4))
                 .key6(key_num.get(5))
+                .cafe_lat(cafe_lat)
+                .cafe_lng(cafe_lng)
                 .build();
         return cafe;
     }
 
     @Builder
-    public CafeDto(int cafe_id, String cafe_name, String cafe_place, int key1, int key2, int key3, int key4, int key5, int key6) {
+    public CafeDto(int cafe_id, String cafe_name, String cafe_place, double cafe_lat,double cafe_lng,
+                   int key1, int key2, int key3, int key4, int key5, int key6) {
         key_num = new ArrayList<>();
+
+
         this.cafe_id = cafe_id;
         this.cafe_name = cafe_name;
         this.cafe_place = cafe_place;
+        this.cafe_lat=cafe_lat;
+        this.cafe_lng=cafe_lng;
         this.key_num.add(key1);
         this.key_num.add(key2);
         this.key_num.add(key3);

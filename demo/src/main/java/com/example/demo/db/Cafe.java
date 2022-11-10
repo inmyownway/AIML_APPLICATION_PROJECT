@@ -23,6 +23,10 @@ public class Cafe {
     @Column(length = 50, nullable = false)
     private String cafe_place;
 
+    @Column(length = 100,nullable = false)
+    private double cafe_lat;
+    private double cafe_lng;
+
     @Column(length = 5, nullable = false)
     private Integer key1;
     private Integer key2;
