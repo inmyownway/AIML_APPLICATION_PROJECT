@@ -27,6 +27,9 @@ public class Cafe {
     private String  cafe_lat;
     private String cafe_lng;
 
+    @Column(length = 100,nullable = false)
+    private Integer cnt;
+
     @Column(length = 5, nullable = false)
     private Integer key1;
     private Integer key2;
