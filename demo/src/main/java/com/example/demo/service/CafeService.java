@@ -70,7 +70,6 @@ public class CafeService {
     @Transactional
     public List<CafeDto> getSearchList(String name){
         //String [] f = filters.split("");
-        //List<Cafe> cafes = cafeRepository.getSearchList(name, f[0],f[1],f[2],f[3],f[4],f[5]);
         List<Cafe> cafes = cafeRepository.findByCafe_nameContaining(name);
 
         List<CafeDto> cafeDtoList = new ArrayList<>();
@@ -91,6 +90,8 @@ public class CafeService {
                     .build();
             cafeDtoList.add(cafeDto);
         }
+
+
         return cafeDtoList;
     }
 }

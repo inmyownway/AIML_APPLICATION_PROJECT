@@ -50,21 +50,29 @@
 <div class="mt-3 mb-3" id="map" style="width:100%;height:75vh; margin: 0 auto; float : left">
     <!--- 정보창 내용 -->
     <div id="info-id" class="p-3">
-        <h3 id="cafename">값</h3>
-        <p class="fw-light" id="cafeplace">값</p>
-        <span id="num">리뷰 10개 </span><br>
-        <div class="filter-wrapper d-flex flex-wrap">
-            <span class="ps-3" id="cafekey1">값</span>
-            <span class="ps-3" id="cafekey2">값</span>
-            <span class="ps-3" id="cafekey3">값</span>
-            <span class="ps-3" id="cafekey4">값</span>
-            <span class="ps-3" id="cafekey5">값</span>
-            <span class="ps-3" id="cafekey6">값</span>
+        <div class=" d-flex justify-content-between align-items-center border-0">
+            <div class="ms-2 me-auto">
+                <h3 id="cafename">값</h3>
+                <p class="fw-light" id="cafeplace">값</p>
+            </div>
+            <span class="badge bg-primary rounded-pill fw-light" id="num">리뷰 10개 </span>
+        </div>
+        <div class="container border-0 justify-content-start" style="margin: 0;">
+            <div class="row" style="max-width: 500px;">
+                <div class="col text-start fw-light"><span id="cafekey1">값</span></div>
+                <div class="col text-start fw-light"><span id="cafekey2">값</span></div>
+                <div class="col text-start fw-light"><span id="cafekey3">값</span></div>
+            </div>
+            <div class="row" style="max-width: 500px;">
+                <div class="col text-start fw-light"><span id="cafekey4">값</span></div>
+                <div class="col text-start fw-light"><span id="cafekey5">값</span></div>
+                <div class="col text-start fw-light"><span id="cafekey6">값</span></div>
+            </div>
         </div>
         <!-- 더보기 버튼 (value = 누른 카페의 ID)-->
         <form id="form-id" action="/more" method="get">
             <input type="hidden" class="input" name="id" id="id" value="1">
-            <button class="btn" type="submit">더보기</button>
+            <button class="btn fw-light" type="submit">더보기</button>
         </form>
     </div>
 </div>
@@ -326,18 +334,20 @@
                 var t7 = document.getElementById("cafekey4");
                 var t8 = document.getElementById("cafekey5");
                 var t9 = document.getElementById("cafekey6");
+                var t10 = document.getElementById("num");
 
-              //  var aa=curId;
+
                 //p 태그 글자(innerText) 바꿔주기
                 //t1.innerText = "id : " + cafeArr[aa].id;
                 t2.innerText = cafeArr[seq].name;
                 t3.innerText = cafeArr[seq].place;
                 t4.innerText = "조용함  " + cafeArr[seq].key_num[0];
-                t5.innerText = "공부하기좋은분위기 " + cafeArr[seq].key_num[1];
+                t5.innerText = "분위기 " + cafeArr[seq].key_num[1];
                 t6.innerText = "콘센트이용 " + cafeArr[seq].key_num[2];
                 t7.innerText = "자리편함 " + cafeArr[seq].key_num[3];
                 t8.innerText = "공간넓음 " + cafeArr[seq].key_num[4];
                 t9.innerText = "메뉴맛있음 " + cafeArr[seq].key_num[5];
+                t10.innerText = "리뷰 " + cafeArr[seq].cnt;
                 document.getElementById("info-id").style.display = 'block';
                 /////
                 // 마커를 클릭하는 부분
