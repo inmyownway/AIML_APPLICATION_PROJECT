@@ -17,8 +17,8 @@
         <span class="page_title text-left fw-bold">검색결과</span>
     </div>
 </nav>
-<div class="text-center pt-5 mt-5">
-    <span th:text="${nullData}?: '검색 결과가 없습니다'"></span>
+<div th:if='${#lists.isEmpty(searchResult)}'class="text-center pt-5 mt-5">
+    <p>검색 결과가 없습니다</p>
 </div>
 <!-- 검색결과 목록 -->
 <th:block th:each="cafe:${searchResult}">
@@ -30,7 +30,7 @@
                     <span class="fw-light text-secondary" th:text="${cafe.cafe_place}">주소</span>
                 </div>
             </a>
-            <span class="badge bg-primary rounded-pill fw-light">리뷰 ??개</span>
+            <span class="badge bg-primary rounded-pill fw-light" th:text="리뷰 +${cafe.cnt}">리뷰 ??개</span>
         </li>
         <div class="container border-0 ps-4 justify-content-start" style="margin: 0;">
             <div class="row" style="max-width: 500px;">
