@@ -48,10 +48,10 @@ public class HomeController {
 
     @GetMapping("/search/result")
     public String search(@RequestParam(value = "text", defaultValue = "") String text,
-                         @RequestParam(value = "filters", defaultValue = "111111") String filter, Model model){
+                         @RequestParam(value = "filters", defaultValue = "000000") String filter, Model model){
         //필터 선택안하면 111111으로 처리
         //하면 한것만 1인것들 검색
-        model.addAttribute("searchResult",  cafeService.getSearchList(text));
+        model.addAttribute("searchResult",  cafeService.getSearchList(text, filter));
         return "searchList";
     }
 }
