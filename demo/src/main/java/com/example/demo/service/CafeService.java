@@ -93,59 +93,34 @@ public class CafeService {
         // TODO : 이 리스트(cafeDtoList)를 기준(10%)로 걸러서 새 리스트(??)에 넣어서 반환
         // 필터를 리스트로 쪼갠다 "111111" -> f = [1,1,1,1,1,1]
         String [] f = filters.split("");
-        List<Integer> tmp2 = new ArrayList<Integer>();
 
-        //필터 1인 키워드번호를 처음에 따로 저장해두고 > list1
-        //if문 여섯 개 돌려서 6개 리스트에 키워드별 기준값 넘는카페 담아두기
-        //저장해둔 list1에 있는 키워드에 대한ㄹ 리스트만 교집합 구하기
+        List<CafeDto> removeList = new ArrayList<>();
 
-        for (int i = 0; i < 6; ++i) {
+        for (int i = 0; i < 6; ++i) { // 각 키워드에 대해
             if (f[i].equals("1")) { // 검색 필터에 포함되는 키워드인 경우
                 // cafeDtoList 중 이 키워드가 기준을 넘게 나온 카페를 선정
-                for (int j=0; j<cafeDtoList.size(); ++j) {
-                    int cnt = cafeDtoList.get(j).getCnt(); // 총 리뷰 개수
-                    int keyNum = cafeDtoList.get(j).getKey_num().get(i); // 키워드 해당하는 리뷰 개수
-                    double rate = (double) keyNum / (double) cnt; // 비율값
-                    System.out.println("rate:" + rate);
-                    if (rate >= 0.1) {  // 비율 10퍼 이상
-                        tmp2.add(j); // 인덱스를 저장
+                for (CafeDto cafeDto : cafeDtoList) {
+                    int cnt = cafeDto.getCnt();
+                    int keyNum = cafeDto.getKey_num().get(i);
+                    double rate = (double) keyNum / (double) cnt;
+
+                    if (rate <= 0.1) {  // 비율 10퍼 이하인 경우
+                        removeList.add(cafeDto);
                     }
                 }
             }
         }
         // 중복제거
-        // List를 Set으로 변경
-        Set<Integer> set = new HashSet<Integer>(tmp2);
+        Set<CafeDto> set = new HashSet<CafeDto>(removeList);  // List를 Set으로 변경
+        List<CafeDto> tmp = new ArrayList<CafeDto>(set);  // Set을 List로 변경
 
-        // Set을 List로 변경
-        List<Integer> tmp =new ArrayList<Integer>(set);
-
-        System.out.println("tmp list");
-        for (int t : tmp) {
-            System.out.print(t + ", ");
+        for (CafeDto cafe : tmp) {  // 검색 결과만 남기기
+            cafeDtoList.remove(cafe);
         }
+        System.out.println("final: " + cafeDtoList.size());
 
-        List<CafeDto> cafeDtoList2 = new ArrayList<>();
-        for (int i=0; i<tmp.size(); ++i){
-            cafeDtoList2.add(cafeDtoList.get(tmp.get(i)));
-        }
 
-//        for (CafeDto cafe : cafeDtoList) { // 각 cafe에 대해
-//            for (int i = 0; i < 6; ++i) { // 각 키워드에 대해
-//                if (f[i].equals("1")) { // 검색 필터에 포함되는 키워드인 경우
-//                    // cafeDtoList 중 이 키워드가 기준을 넘게 나온 카페를 선정
-//                    for (CafeDto cafeDto : cafeDtoList) {
-//                        int cnt = cafeDto.getCnt();
-//                        int keyNum = cafeDto.getKey_num().get(i);
-//                        double rate = (double) cnt / (double) keyNum;
-//                        if (rate < 0.1) {  // 비율 10퍼 이하인 경우
-//                            cafeDtoList.remove(cafeDto); // cafeDtoList에서 삭제
-//                        }
-//                    }
-//                }
-//            }
-//        }
-        return cafeDtoList2;
+        return cafeDtoList;
     }
 }
 
