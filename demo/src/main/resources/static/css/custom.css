@@ -2,6 +2,7 @@
 
 @import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
 @import url('http://fonts.googleapis.com/earlyaccess/notosanskr.css');
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
 body {
     font-family: 'Noto Sans KR', sans-serif;
@@ -51,7 +52,12 @@ input {
 .page_title{
     font-size: 28px;
 }
-
+#to_search_btn{
+    position:absolute;
+    top:15px;
+    right:15px;
+    z-index:11;
+}
 #info-id{
     position:absolute;
     width: 100%;
@@ -59,4 +65,7 @@ input {
     left:0;
     background-color: #ffffff;
     z-index:10;
+}
+#nav_title{
+    font-family: 'Jua', sans-serif;
 }

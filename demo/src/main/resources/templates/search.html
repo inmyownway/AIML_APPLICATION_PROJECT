@@ -21,13 +21,13 @@
 <div class="contents">
     <!--- 검색창 -->
     <section class="mt-5 mb-5" id="s">
-        <form id="searchForm" action="/search/result" method="get" class="search-bar m-3">
+        <form id="searchForm" action="/search/result" method="get" class="search-bar m-5">
             <label>검색어를 입력하세요</label>
-            <div><input type="text" class="input" name="text"></div>
+            <div><input type="text" class="input" name="text" placeholder="검색할 카페 이름을 입력하세요"></div>
 
             <!-- 필터 -->
-            <section class="m-3" >
-                <label>키워드를 선택하세요</label>
+            <section class="mt-5" >
+                <label>검색할 키워드를 선택하세요</label>
                 <div class="filter-wrapper d-flex flex-wrap">
                     <div class="filter">
                         <input type="checkbox" class="btn-check" id="check1" autocomplete="off" value="1" onchange="makeFilter(this);">
@@ -58,7 +58,7 @@
             <!-- 검색버튼 -->
             <div class="mt-5" id="search_btn">
                 <input type="hidden" id="filters" name="filters" value="000000">
-                <button class="btn btn-secondary mt-5 ms-3" type="submit">검색</button>
+                <button class="btn mt-5" type="submit" style="color:#ffffff; background-color: #6dc9c8">검색</button>
             </div>
 
         </form>
