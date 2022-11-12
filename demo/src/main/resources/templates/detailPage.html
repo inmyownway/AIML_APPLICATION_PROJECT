@@ -22,8 +22,8 @@
     <section class="section-cafeInfo pt-3">
         <h1 class="text-left fw-bold" th:text="${dto.cafe_name}"></h1>
         <p class="text-left fw-light mt-n1" th:text="${dto.cafe_place}"></p>
-        <div class="mt-5 text-end mb-1">
-            <input type="button" value="지도에서보기" onclick="history.back();" style="WIDTH: 70pt; HEIGHT: 40pt"  />
+        <div class="mt-5 mb-1 d-flex justify-content-end">
+            <button class="btn btn-primary fw-normal border-0" onclick="history.back();" style="font-size:small; background-color: #6dc9c8;">지도에서 보기</button>
             <!--<form id="form-id" action="/more" method="get">
                 <input type="hidden" class="input" name="id" value="${dto.cafe_id}">
                 <button class="btn" type="submit">지도에서보기</button>
@@ -44,7 +44,7 @@
                                 <strong th:case="4" class="text-muted fw-normal"><img src="/assets/space_icon.png" class="me-2" width="30" height="30">공간 넓음</strong>
                                 <strong th:case="5" class="text-muted fw-normal"><img src="/assets/delicious_icon.png" class="me-2" width="30" height="30">메뉴 맛있음</strong>
                             </span>
-                            <p class="badge bg-light text-muted light" th:text="리뷰+${n}">개수</p>
+                            <p class="badge rounded-pill bg-light text-muted" th:text="리뷰+${n}" >개수</p>
                         </div>
                         <th:block th:each="data, stat : ${dto.sentList}">
                             <dd class="key-sent-list" style="list-style:none;" >
