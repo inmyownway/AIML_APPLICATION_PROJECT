@@ -23,7 +23,7 @@
         <h1 class="text-left fw-bold" th:text="${dto.cafe_name}"></h1>
         <p class="text-left fw-light mt-n1" th:text="${dto.cafe_place}"></p>
         <div class="mt-5 text-end mb-1">
-            <a href='/' class="map-link text-end">지도에서보기</a>
+            <input type="button" value="지도에서보기" onclick="history.back();" style="WIDTH: 70pt; HEIGHT: 40pt"  />
             <!--<form id="form-id" action="/more" method="get">
                 <input type="hidden" class="input" name="id" value="${dto.cafe_id}">
                 <button class="btn" type="submit">지도에서보기</button>
