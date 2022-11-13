@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="css/custom.css">
 </head>
 <body>
-<!-- Responsive navbar-->
+<!-- 타이틀 -->
 <nav class="navbar m-0 p-0" style="background-color: #ffffff">
     <div class="container-fluid justify-content-center align-content-center m-0 p-1">
         <img src="/assets/지도_컬러.png" width="40" class="me-2 pb-2">
@@ -30,7 +30,7 @@
         <h1 class="lead">더보기 클릭시 자세한 정보를 볼수있습니다.</h1>-->
 </div>
 
-<div class="mb-3" id="map" style="width:100%;height:75vh; margin: 0 auto; float : left">
+<div id="map" style="width:100%;height:94vh; margin: 0 auto; float : left">
     <!-- 검색 버튼 -->
     <button type="button" id="to_search_btn" class=" btn btn-white" onClick="location.href='/search'">
         <img src="/assets/검색버튼_민트.png" width="40" height="40">
@@ -206,9 +206,21 @@
         let markers = new Array(); // 마커 정보를 담는 배열
         let infoWindows = new Array(); // 정보창을 담는 배열
 
+        let init_id = [[${idFromDetail}]];  //상세정보창에서 넘어온 카페의 id
+        let init_x = 37.5544121;    //기본 lat
+        let init_y = 126.921235;    //기본 lng
+        let zoom_level = 15;    //기본 zoom(마커 적당히 많이 보이는 정도)
+
+        if(init_id != "0"){ //넘어온 id가 있다면
+            init_x = cafeArr[init_id-1].cafe_lat;   //id가 1부터 시작하니까 -1
+            init_y = cafeArr[init_id-1].cafe_lng;
+            zoom_level = 18;    //그 카페를 확대
+        }
+
+        // 지도 띄우기
         var map = new naver.maps.Map('map', {
-            center: new naver.maps.LatLng(37.5544121, 126.921235),
-            zoom: 15
+            center: new naver.maps.LatLng(init_x, init_y),
+            zoom: zoom_level
         });
         var infowindow = new naver.maps.InfoWindow();
 
@@ -216,11 +228,11 @@
             var location = new naver.maps.LatLng(position.coords.latitude,
                 position.coords.longitude);
 
-           // map.setCenter(location); // 얻은 좌표를 지도의 중심으로 설정합니다.
-          //  map.setZoom(17); // 지도의 줌 레벨을 변경합니다.
+            // map.setCenter(location); // 얻은 좌표를 지도의 중심으로 설정합니다.
+            //  map.setZoom(17); // 지도의 줌 레벨을 변경합니다.
 
             // infowindow.setContent('<div style="padding:20px;">' + '현재위치' + '</div>');
-
+            // 사용자의 현 위치 마커 생성
             var marker = new naver.maps.Marker({
                 map: map,
                 icon:{
@@ -293,7 +305,7 @@
           //  infoWindows.push(infoWindow); // 생성한 정보창을 배열에 담는다.
         }
 
-        //////시연용 : 홍대에 내 위치 찍어두기
+        ////////////// 시연용 : 홍대에 내 위치 찍어두기 //////////////
         var marker = new naver.maps.Marker({
             map: map,
             icon:{
@@ -303,12 +315,14 @@
             position: new naver.maps.LatLng(37.55124197405323, 126.92481185091022) // 지역구의 위도 경도 넣기
         });
         markers.push(marker);
+        /////////////////////////////////////////////////////////
 
+        //마커 클릭 시 실행할 함수
         function getClickHandler(seq) {
             return function(e) {
                 curId = cafeArr[seq].id;
                 document.getElementById("id").value = curId;
-                /////하단정보창
+                //하단정보창
                 var t2 = document.getElementById("cafename");
                 var t3 = document.getElementById("cafeplace");
                 var t4 = document.getElementById("cafekey1");
@@ -332,7 +346,7 @@
                 t9.innerText = "메뉴맛있음 " + cafeArr[seq].key_num[5];
                 t10.innerText = "리뷰 " + cafeArr[seq].cnt;
                 document.getElementById("info-id").style.display = 'block';
-                /////
+
                 // 마커를 클릭하는 부분
                 var marker = markers[seq], // 클릭한 마커의 시퀀스로 찾는다.
                     infoWindow = infoWindows[seq]; // 클릭한 마커의 시퀀스로 찾는다

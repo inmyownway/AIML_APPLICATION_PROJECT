@@ -23,11 +23,15 @@
         <h1 class="text-left fw-bold" th:text="${dto.cafe_name}"></h1>
         <p class="text-left fw-light mt-n1" th:text="${dto.cafe_place}"></p>
         <div class="mt-5 mb-1 d-flex justify-content-end">
-            <button class="btn btn-primary fw-normal border-0" onclick="history.back();" style="font-size:small; background-color: #6dc9c8;">지도에서 보기</button>
-            <!--<form id="form-id" action="/more" method="get">
-                <input type="hidden" class="input" name="id" value="${dto.cafe_id}">
-                <button class="btn" type="submit">지도에서보기</button>
-            </form>-->
+            <a th:href="@{/(id=${dto.cafe_id})}">
+                <button class="btn btn-primary fw-normal border-0" style="font-size:small; background-color: #6dc9c8;">
+                    지도에서 보기
+                </button>
+            </a>
+                <!--<form id="form-id" action="/more" method="get">
+                                <input type="hidden" class="input" name="id" value="${dto.cafe_id}">
+                                <button class="btn" type="submit">지도에서보기</button>
+                            </form>-->
         </div>
     </section>
     <section class="section-keyInfo">

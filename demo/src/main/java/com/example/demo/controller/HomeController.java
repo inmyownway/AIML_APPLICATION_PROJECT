@@ -23,10 +23,21 @@ public class HomeController {
     }
 
     /* 지도화면 */
+//    @GetMapping("/")
+//    public String home(Model model) {
+//        List<CafeDto> cafeDtoList = cafeService.getCafelist();
+//        model.addAttribute("cafeList", cafeDtoList);
+//        return "home";
+//    }
     @GetMapping("/")
-    public String home(Model model) {
+    public String home(@RequestParam(value = "id", required = false) String id, Model model) {
+        if(id==null){
+            System.out.println("넘어온id없음");
+            id = "0";
+        }
         List<CafeDto> cafeDtoList = cafeService.getCafelist();
         model.addAttribute("cafeList", cafeDtoList);
+        model.addAttribute("idFromDetail",id);
         return "home";
     }
 
