@@ -60,9 +60,12 @@ public class HomeController {
     @GetMapping("/search/result")
     public String search(@RequestParam(value = "text", defaultValue = "") String text,
                          @RequestParam(value = "filters", defaultValue = "000000") String filter, Model model){
-        //필터 선택안하면 111111으로 처리
-        //하면 한것만 1인것들 검색
+        //검색어: 기본값 null
+        //필터: 선택 안 하면 000000으로 처리
+        //하면 선택된 키워드들만 1인 것들 검색
         model.addAttribute("searchResult",  cafeService.getSearchList(text, filter));
+        model.addAttribute("searchText", text);
+        model.addAttribute("searchFilter", cafeService.getSearchFilterList(filter));
         return "searchList";
     }
 }

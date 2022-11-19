@@ -122,5 +122,28 @@ public class CafeService {
 
         return cafeDtoList;
     }
+
+    @Transactional
+    public List<String> getSearchFilterList(String filters) {
+        String [] f = filters.split("");
+
+        List<String> keywordList = new ArrayList<>();
+        keywordList.add("조용함");
+        keywordList.add("분위기");
+        keywordList.add("콘센트 이용");
+        keywordList.add("자리 편함");
+        keywordList.add("공간 넓음");
+        keywordList.add("메뉴 맛있음");
+
+        List<String> filterList = new ArrayList<>();
+
+        for (int i=0; i<6; ++i) {
+            if (f[i].equals("1")) {
+                filterList.add(keywordList.get(i));
+            }
+        }
+
+        return filterList;
+    }
 }
 
