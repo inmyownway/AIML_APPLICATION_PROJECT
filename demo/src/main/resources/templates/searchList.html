@@ -19,11 +19,12 @@
     </div>
 </nav>
 <!-- 검색어/필터 표시 -->
-<div class="container fs-6 m-2">
-    <span class="fw-light">ㆍ  검색어:  </span>
-    <span th:text="${searchText}">검색어</span><br>
-    <span class="fw-light">ㆍ  선택한 키워드:  </span>
-    <span th:text="${searchFilter}">검색필터</span>
+<div class="container fs-6 m-3">
+    <span th:text="${searchText}" class="fw-light">검색어</span>
+    <span>ㅤ</span>
+    <span th:each="keyword:${searchFilter}">
+        <span class="badge rounded-pill fw-light" th:text="${keyword}" style="color:#ffffff; background-color: #6dc9c8">키워드</span>
+    </span><br><br>
 </div>
 <!-- 검색 결과 없는 경우 -->
 <div th:if='${#lists.isEmpty(searchResult)}'class="text-center pt-5 mt-5">
