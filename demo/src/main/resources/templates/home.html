@@ -33,18 +33,15 @@
         <img src="/assets/지도_컬러.png" width="40" class="me-2 pb-2">
         <span id="nav_title" class="navbar-brand fw-normal fs-1">홍대생의 카공지도</span><br>
     </div>
-
 </nav>
-<!-- Page content-->
-<div class="container">
-
+<!-- 설명글 -->
+<div class="container m-0">
     <div class="text-center mb-2">
         <span class="fw-light" style="font-size:15px">카페를 클릭해 정보를 확인해보세요!</span>
     </div>
-
 </div>
 
-
+<!-- 지도 -->
 <div id="map" style="width:100%;height:93vh; margin: 0 auto; float : left">
 
     <!-- 검색 버튼 -->
@@ -68,7 +65,7 @@
                 <h3 id="cafename">값</h3>
                 <p class="fw-light" id="cafeplace" style="font-size: small">값</p>
             </div>
-            <span class="badge rounded-pill fw-light" style="background-color: #6dc9c8" id="num">리뷰 10개 </span>
+            <span class="badge rounded-pill bg-light text-muted fw-normal" id="num">리뷰 ?개 </span>
         </div>
         <div class="container border-0 justify-content-start" style="margin: 0;">
             <div class="row" style="max-width: 500px;">
@@ -86,7 +83,7 @@
         <div class="mt-3 mb-3 d-flex justify-content-end">
             <form id="form-id" action="/more" method="get">
                 <input type="hidden" class="input" name="id" id="id" value="1" >
-                <button class="btn btn-outline-dark" type="submit" style="font-size: small;">더보기</button>
+                <button type="submit" class="btn btn-primary fw-normal border-0" style="font-size:small; background-color: #6dc9c8;">더보기</button>
             </form>
         </div>
     </div>

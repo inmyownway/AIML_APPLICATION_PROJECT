@@ -39,7 +39,10 @@
                     <span class="fw-light text-secondary" th:text="${cafe.cafe_place}" style="font-size: small">주소</span>
                 </div>
             </a>
+            <span class="badge rounded-pill bg-light text-muted fw-normal" th:text="리뷰 +${cafe.cnt}">리뷰 ??개</span>
+            <!-- 민트색 둥근뱃지
             <span class="badge rounded-pill fw-light" th:text="리뷰 +${cafe.cnt}" style="color:#ffffff; background-color: #6dc9c8">리뷰 ??개</span>
+            -->
         </li>
         <div class="container border-0 ps-4 justify-content-start" style="margin: 0;">
             <div class="row" style="max-width: 500px;">

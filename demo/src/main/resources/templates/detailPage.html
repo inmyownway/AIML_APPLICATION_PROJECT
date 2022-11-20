@@ -49,7 +49,7 @@
                                 <strong th:case="4" class="text-muted fw-normal"><img src="/assets/space_icon.png" class="me-2" width="30" height="30">공간 넓음</strong>
                                 <strong th:case="5" class="text-muted fw-normal"><img src="/assets/delicious_icon.png" class="me-2" width="30" height="30">메뉴 맛있음</strong>
                             </span>
-                            <p class="badge rounded-pill bg-light text-muted" th:text="리뷰+${n}" >개수</p>
+                            <p class="badge rounded-pill bg-light text-muted fw-normal" th:text="리뷰+${n}" >개수</p>
                         </div>
                         <th:block th:each="data, stat : ${dto.sentList}">
                             <dd class="key-sent-list" style="list-style:none;" >
