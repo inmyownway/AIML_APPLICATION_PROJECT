@@ -5,7 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>홍대생의 카공지도</title>
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=pjyeb54o2p"></script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=pjyeb54o2p">
+
+
+
+
+    </script>
+<body style="overflow-x:hidden; overflow-y:hidden;">
+<style>
+        body {
+            margin:0;
+        }
+    </style>
+
     <script src="https://code.jquery.com/jquery-3.6.0.js"integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="crossorigin="anonymous"></script>
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -16,31 +28,34 @@
 </head>
 <body>
 <!-- 타이틀 -->
-<nav class="navbar m-0 p-0" style="background-color: #ffffff">
+<nav class="navbar mt-2 p-0" style="background-color: #ffffff">
     <div class="container-fluid justify-content-center align-content-center">
         <img src="/assets/지도_컬러.png" width="40" class="me-2 pb-2">
         <span id="nav_title" class="navbar-brand fw-normal fs-1">홍대생의 카공지도</span><br>
     </div>
+
 </nav>
 <!-- Page content-->
 <div class="container">
+
     <div class="text-center mb-2">
-        <span class="fw-light" style="font-size:13px">카페를 클릭해 정보를 확인해보세요!</span>
+        <span class="fw-light" style="font-size:15px">카페를 클릭해 정보를 확인해보세요!</span>
     </div>
-<!--        <div class="text-center">-->
-<!--            <span class="fw-light">카페를 클릭해 정보를 확인해보세요!</span><br>-->
-<!--            <span class="fs-6 fw-light">카페를 클릭해 다른 사람들은 어떻게 느꼈는지 확인해보세요!</span><br>-->
-<!--        <p class="lead">카페 클릭시 정보를 볼수있습니다.</p>-->
-<!--        <h1 class="lead">더보기 클릭시 자세한 정보를 볼수있습니다.</h1>-->
+
 </div>
 
-<div id="map" style="width:100%;height:90vh; margin: 0 auto; float : left">
+
+<div id="map" style="width:100%;height:93vh; margin: 0 auto; float : left">
+
     <!-- 검색 버튼 -->
     <button type="button" id="to_search_btn" class=" btn btn-white" onClick="location.href='/search'">
         <img src="/assets/검색버튼_민트.png" width="40" height="40">
         <!--<img src="/assets/검색버튼_네이비.png" width="40" height="40">-->
     </button>
-
+    <button type="button" id="to-current" class=" btn btn-white" >
+        <img src="/assets/c3.png" width="40" height="40">
+        <!--<img src="/assets/검색버튼_네이비.png" width="40" height="40">-->
+    </button>
     <!--- 정보창 내용 -->
     <div id="info-id" class="p-3">
         <div class="d-flex justify-content-end" style="margin: -12px">
@@ -117,95 +132,17 @@
     function initMap() {
         document.getElementById("info-id").style.display = 'none';
         var areaArr = new Array();  // 지역을 담는 배열 ( 지역명/위도경도 )
-        areaArr.push(
-            /*지역구 이름*/			/*위도*/					/*경도*/
-            {location : '베어스덴',lat:'37.5498732347229',lng:'126.922668185082'},
-            {location : '언더플로어',lat:'37.5498732347229',lng:'126.922668185082'},
-            {location : '작당모의',lat:'37.5606085859485',lng:'126.925417012996'},
-            {location : '아벨롭',lat:'37.5544654855325',lng:'126.918841400479'},
-            {location : '피오니',lat:'37.5500851944722',lng:'126.919764712297'},
-            {location : '모센즈스위트',lat:'37.5498355858466',lng:'126.920784708281'},
-            {location : '아오이토리,',lat:'37.5547753182732',lng:'126.929469982132'},
-            {location : '샌드커피',lat:'37.5592711660529',lng:'126.924174847151'},
-            {location : '카페 공명',lat:'37.5598714945494',lng:'126.926300212385'},
-            {location : '도식화',lat:'37.5497882345776',lng:'126.921792717037'},
-            // {location : '앳커피',lat:'37.5498732347229',lng:'126.922668185082'},
-            // {location : '스타벅스 홍대역8번출구점' , lat : '37.55602055992243' , lng : '126.922939675669061'},
-            // {location : '스타벅스 홍대공항철도역점' , lat : '37.55748838221418' , lng : '126.92519320428961'},
-            // {location : '엔젤리너스 L7홍대점' , lat : '37.55567500441952' , lng : '126.92153667791773 '},
-            // {location : '홍대 투썸플레이스' , lat : '37.558061977615345' , lng : '126.92395616899384'},
-            // {location : '커피빈 홍대역8번출구점' , lat: '37.556776463845345',lng: '126.92498737097256 '},
-
-            {location : '도식화',lat:'37.5512291674425',lng:'126.915342505913'},
-            {location : '도식화',lat:'37.5580627655669',lng:'126.929283196897'},
-            {location : '도식화',lat:'37.5492304330819',lng:'126.917434904257'},
-            {location : '도식화',lat:'37.5479140756509',lng:'126.923315911128'},
-            {location : '도식화',lat:'37.5478957029264',lng:'126.917190362476'},
-            {location : '도식화',lat:'37.547693524246',lng:'126.917713619072'},
-            {location : '도식화',lat:'37.5488300965598',lng:'126.917190362476'},
-            {location : '도식화',lat:'37.5478957029264',lng:'126.922450970715'},
-            {location : '도식화',lat:'37.5473162154361',lng:'126.922690177234'},
-            {location : '도식화',lat:'37.5515411134987',lng:'126.921096037489'},
-
-            {location : '도식화',lat:'37.551347497484',lng:'126.922058388556'},
-            {location : '도식화',lat:'37.5492243732318',lng:'126.920419383003'},
-            {location : '도식화',lat:'37.5494298799352',lng:'126.921615197284'},
-            {location : '도식화',lat:'37.5511805964953',lng:'126.920250155629'},
-            {location : '도식화',lat:'37.5481796265553',lng:'126.922665974076'},
-            {location : '도식화',lat:'37.548552950744',lng:'126.917403965922'},
-             {location : '도식화',lat:'37.5478957029264',lng:'126.922146248597'},
-            {location : '도식화',lat:',37.5480427837486',lng:'126.919320216476'},
-            {location : '도식화',lat:'37.5472344928949',lng:'126.917190362476'},
-            {location : '도식화',lat:'37.545169596296',lng:'126.914100662532'},
-
-            {location : '도식화',lat:'37.547223060744',lng:'126.918287296153'},
-            {location : '도식화',lat:'37.5497489457886',lng:'126.922880610497'},
-            {location : '도식화',lat:'37.5472577971992',lng:'126.917837103991'},
-            {location : '도식화',lat:'37.5511933100314',lng:'126.921881669256'},
-            {location : '도식화',lat:'37.549699608115',lng:'126.919957731837'},
-            {location : '도식화',lat:'37.5462777501329',lng:'126.913874316815'},
-            {location : '도식화',lat:'37.5462777501329',lng:'126.913874316815'},
-            {location : '도식화',lat:'37.5463813420495',lng:'126.918019121351'},
-            {location : '도식화',lat:'37.5490990328558',lng:'126.918031761543'},
-            {location : '도식화',lat:'37.5503550144727',lng:'126.919987585685'},
-
-
-            {location : '도식화',lat:'37.552184839072',lng:'126.920636800506'},
-            {location : '도식화',lat:'37.5552687128652',lng:'126.928584503751'},
-            {location : '도식화',lat:'37.5493038675519',lng:'126.928584503751'},
-            {location : '도식화',lat:'37.5493038675519',lng:'126.919659854608'},
-            {location : '도식화',lat:'37.5573689701965',lng:'126.928787574736'},
-            {location : '도식화',lat:'37.5618472946461',lng:'126.92820868228'},
-            {location : '도식화',lat:'37.5497679403446',lng:'126.921352980047'},
-            {location : '도식화',lat:'37.5497942367002',lng:'126.922286222388'},
-            {location : '도식화',lat:'37.5498732347229',lng:'126.922668185082'},
-            {location : '도식화',lat:'37.592887877547',lng:'127.141959285175'},
-
-            {location : '도식화',lat:'37.5481616020158',lng:'126.921430712861'},
-            {location : '도식화',lat:'37.5458669613769',lng:'126.921600709469'},
-            {location : '도식화',lat:'37.5518419835012',lng:'126.919931222832'},
-            {location : '도식화',lat:'37.5477478250496',lng:'126.91884279986'},
-            {location : '도식화',lat:'37.5467374852224',lng:'126.917213257312'},
-            {location : '도식화',lat:'37.5561130617043',lng:'126.923446601456'},
-            {location : '도식화',lat:'37.548752100984',lng:'126.919402547874'},
-            {location : '도식화',lat:'37.5490889627418,',lng:'126.921646221657'},
-            {location : '도식화',lat:'37.5461389190988',lng:'126.922063811817'},
-            {location : '도식화',lat:'37.5498156376086',lng:'126.918611738626'},
-
-
-            {location : '도식화',lat:'37.5467189339352',lng:'126.914694559649'},
-            {location : '도식화',lat:'37.5484577443971',lng:'126.920867304116'},
-            {location : '도식화',lat:'37.550483642878',lng:'126.920872857597'},
-            {location : '도식화',lat:'37.5458450814854',lng:'126.927694560914'},
-            {location : '도식화',lat:'37.5502168193782,',lng:'126.919483920958'},
-            {location : '도식화',lat:'37.5462838392978',lng:'126.914442257195'},
-            {location : '도식화',lat:'37.5472275065255',lng:'126.919512937021'},
 
 
 
 
 
-        );
+
+
+
+        // w = window.innerWidth;
+        // h = window.innerHeight;
+
 
         let markers = new Array(); // 마커 정보를 담는 배열
         let infoWindows = new Array(); // 정보창을 담는 배열
@@ -222,6 +159,10 @@
         }
 
         // 지도 띄우기
+
+       var temp_lat;
+        var temp_lng;
+
         var map = new naver.maps.Map('map', {
             center: new naver.maps.LatLng(init_x, init_y),
             zoom: zoom_level
@@ -231,6 +172,17 @@
         function onSuccessGeolocation(position) {
             var location = new naver.maps.LatLng(position.coords.latitude,
                 position.coords.longitude);
+
+
+            temp_lat=position.coords.latitude;
+            temp_lng=position.coords.longitude;
+            var curr_place = new naver.maps.LatLng(temp_lat,temp_lng)
+
+            $("#to-current").on("click", function(e) {
+                e.preventDefault();
+
+                map.setCenter(curr_place);
+            });
 
             // map.setCenter(location); // 얻은 좌표를 지도의 중심으로 설정합니다.
             //  map.setZoom(17); // 지도의 줌 레벨을 변경합니다.
@@ -278,6 +230,10 @@
 
         /* 정보창 */
 
+        // 현위치 버튼
+
+
+
 
         // DB에 있는거 넣기
         for(var i = 0; i<cafeArr.length;i++)
@@ -309,17 +265,7 @@
           //  infoWindows.push(infoWindow); // 생성한 정보창을 배열에 담는다.
         }
 
-        ////////////// 시연용 : 홍대에 내 위치 찍어두기 //////////////
-        var marker = new naver.maps.Marker({
-            map: map,
-            icon:{
-                content: '<img src="assets/사람3.png" alt="" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: 40px; max-height: 40px; -webkit-user-select: none; position: absolute; width: 40px; height: 55px; left: 0px; top: 0px;">',
-                size: new naver.maps.Size(32, 32)},
-            title: "내 위치", // 지역구 이름
-            position: new naver.maps.LatLng(37.55124197405323, 126.92481185091022) // 지역구의 위도 경도 넣기
-        });
-        markers.push(marker);
-        /////////////////////////////////////////////////////////
+
 
         //마커 클릭 시 실행할 함수
         function getClickHandler(seq) {
