@@ -27,32 +27,57 @@
     <!--<link rel="favicon" href="assets/favicon.ico">-->
 </head>
 <body>
-<!-- 타이틀 -->
+
+<!-- 타이틀
 <nav class="navbar mt-2 p-0" style="background-color: #ffffff">
     <div class="container-fluid justify-content-center align-content-center">
         <img src="/assets/지도_컬러.png" width="40" class="me-2 pb-2">
         <span id="nav_title" class="navbar-brand fw-normal fs-1">홍대생의 카공지도</span><br>
     </div>
 </nav>
-<!-- 설명글 -->
+ 설명글
 <div class="container m-0">
     <div class="text-center mb-2">
         <span class="fw-light" style="font-size:15px">카페를 클릭해 정보를 확인해보세요!</span>
     </div>
 </div>
-
+-->
 <!-- 지도 -->
-<div id="map" style="width:100%;height:93vh; margin: 0 auto; float : left">
+<div id="map" style="width:100%;height:100vh; margin: 0 auto; float : left; outline-color:#ffffff">
 
-    <!-- 검색 버튼 -->
-    <button type="button" id="to_search_btn" class=" btn btn-white" onClick="location.href='/search'">
-        <img src="/assets/검색버튼_민트.png" width="40" height="40">
-        <!--<img src="/assets/검색버튼_네이비.png" width="40" height="40">-->
-    </button>
-    <button type="button" id="to-current" class=" btn btn-white" >
-        <img src="/assets/c3.png" width="40" height="40">
-        <!--<img src="/assets/검색버튼_네이비.png" width="40" height="40">-->
-    </button>
+    <div id="top-nav-bar">
+        <div class="bg-white">
+            <!-- 타이틀 -->
+            <nav class="navbar pt-2 p-0" style="background-color: #ffffff">
+                <div class="container-fluid justify-content-center align-content-center">
+                    <img src="/assets/지도_컬러.png" width="40" class="me-2 pb-2">
+                    <span id="nav_title" class="navbar-brand fw-normal fs-1">홍대생의 카공지도</span><br>
+                </div>
+            </nav>
+            <!-- 설명글 -->
+            <div class="m-0 d-flex justify-content-center">
+                <div class="text-center pb-2">
+                    <span class="fw-light" style="font-size:15px">카페를 클릭해 정보를 확인해보세요!</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between m-3">
+            <!-- 현위치 버튼 -->
+            <button type="button" id="to-current" class=" btn btn-white" >
+                <img src="/assets/c3.png" width="40" height="40">
+                <!--<img src="/assets/검색버튼_네이비.png" width="40" height="40">-->
+            </button>
+            <!-- 검색 버튼 -->
+            <button type="button" id="to_search_btn" class=" btn btn-white" onClick="location.href='/search'">
+                <img src="/assets/검색버튼_민트.png" width="40" height="40">
+                <!--<img src="/assets/검색버튼_네이비.png" width="40" height="40">-->
+            </button>
+
+        </div>
+    </div>
+
+
     <!--- 정보창 내용 -->
     <div id="info-id" class="p-3">
         <div class="d-flex justify-content-end" style="margin: -12px">
