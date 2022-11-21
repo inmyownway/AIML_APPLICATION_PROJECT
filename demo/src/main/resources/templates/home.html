@@ -89,15 +89,13 @@
             <span class="badge rounded-pill bg-light text-muted fw-normal" id="num">리뷰 ?개 </span>
         </div>
         <div class="container border-0 justify-content-start" style="margin: 0;">
-            <div class="row" style="max-width: 500px;">
-                <div class="col text-start fw-light"><img src="/assets/silent_icon.png" width="20" height="20"><span id="cafekey1">값</span></div>
-                <div class="col text-start fw-light"><img src="/assets/mood_icon.png" width="20" height="20"><span id="cafekey2">값</span></div>
-                <div class="col text-start fw-light"><img src="/assets/consent_icon.png" width="20" height="20"><span id="cafekey3">값</span></div>
-            </div>
-            <div class="row" style="max-width: 500px;">
-                <div class="col text-start fw-light"><img src="/assets/table_icon.png" width="20" height="20"><span id="cafekey4">값</span></div>
-                <div class="col text-start fw-light"><img src="/assets/space_icon.png" width="20" height="20"><span id="cafekey5">값</span></div>
-                <div class="col text-start fw-light"><img src="/assets/delicious_icon.png" width="20" height="20"><span id="cafekey6">값</span></div>
+            <div class="row">
+                <div class="col-6 col-sm-4 text-start fw-light"><img src="/assets/silent_icon.png" width="20" height="20"><span id="cafekey1">값</span></div>
+                <div class="col-6 col-sm-4 text-start fw-light"><img src="/assets/mood_icon.png" width="20" height="20"><span id="cafekey2">값</span></div>
+                <div class="col-6 col-sm-4 text-start fw-light"><img src="/assets/consent_icon.png" width="20" height="20"><span id="cafekey3">값</span></div>
+                <div class="col-6 col-sm-4 text-start fw-light"><img src="/assets/table_icon.png" width="20" height="20"><span id="cafekey4">값</span></div>
+                <div class="col-6 col-sm-4 text-start fw-light"><img src="/assets/space_icon.png" width="20" height="20"><span id="cafekey5">값</span></div>
+                <div class="col-6 col-sm-4 text-start fw-light"><img src="/assets/delicious_icon.png" width="20" height="20"><span id="cafekey6">값</span></div>
             </div>
         </div>
         <!-- 더보기 버튼 (value = 누른 카페의 ID)-->
@@ -170,7 +168,7 @@
 
         // 지도 띄우기
 
-       var temp_lat;
+        var temp_lat;
         var temp_lng;
 
         var map = new naver.maps.Map('map', {
