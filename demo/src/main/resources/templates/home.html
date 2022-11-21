@@ -15,7 +15,7 @@
     <!--<link rel="favicon" href="assets/favicon.ico">-->
 </head>
 
-<body style="overflow-x:hidden; overflow-y:hidden;">
+<body style="overflow-x:hidden">
 <style>
     body {
         margin:0;
@@ -214,12 +214,36 @@
 
 
         function onErrorGeolocation() {
-            var center = map.getCenter();
+            // https 연결이 아니면 geolocation이 불가능 >
+            var location = new naver.maps.LatLng(37.55029614586658, 126.92515795593972);
+            var curr_place = location;
 
-            infowindow.setContent('<div style="padding:20px;">' +
-                '<h5 style="margin-bottom:5px;color:#f00;">Geolocation failed!</h5>'+ "latitude: "+ center.lat() +"<br />longitude: "+ center.lng() +'</div>');
+            $("#to-current").on("click", function(e) {
+                e.preventDefault();
 
-            infowindow.open(map, center);
+                map.panTo(curr_place);
+            });
+
+            // 사용자의 현 위치 마커 생성
+            var marker = new naver.maps.Marker({
+                map: map,
+                icon:{
+                    content: '<img src="assets/사람3.png" alt="" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: 40px; max-height: 40px; -webkit-user-select: none; position: absolute; width: 40px; height: 55px; left: 0px; top: 0px;">',
+                    size: new naver.maps.Size(32, 32)},
+                title: "내 위치", // 지역구 이름
+                position: location // 지역구의 위도 경도 넣기
+            });
+            markers.push(marker);
+            //infowindow.open(map, location);
+
+
+
+            // var center = map.getCenter();
+            //
+            // infowindow.setContent('<div style="padding:20px;">' +
+            //     '<h5 style="margin-bottom:5px;color:#f00;">Geolocation failed!</h5>'+ "latitude: "+ center.lat() +"<br />longitude: "+ center.lng() +'</div>');
+            //
+            // infowindow.open(map, center);
         }
 
         $(window).on("load", function() {
