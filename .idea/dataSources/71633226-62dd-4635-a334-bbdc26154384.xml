@@ -973,11 +973,11 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     <user id="283" parent="1" name="rdsadmin">
       <Host>localhost</Host>
     </user>
-    <table id="284" parent="274" name="cafe_info_final">
+    <table id="284" parent="274" name="cafe_info">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="285" parent="274" name="cafe_sent_final">
+    <table id="285" parent="274" name="cafe_sen">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
@@ -1050,30 +1050,40 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>cafe_info_final_cafe_id_uindex</UnderlyingIndexName>
     </key>
     <column id="302" parent="285" name="sent_id">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>1344</AutoIncrement>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="303" parent="285" name="sen_key">
-      <DataType>text|0s</DataType>
+    <column id="303" parent="285" name="cafe_id">
+      <DataType>int|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="304" parent="285" name="key_num">
-      <DataType>int|0s</DataType>
+    <column id="304" parent="285" name="sen_key">
+      <DataType>text|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="305" parent="285" name="cafe_id">
+    <column id="305" parent="285" name="key_num">
       <DataType>int|0s</DataType>
       <Position>4</Position>
     </column>
-    <index id="306" parent="285" name="cafe_sent_final_sent_id_uindex">
+    <index id="306" parent="285" name="PRIMARY">
       <ColNames>sent_id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="307" parent="285" name="cafe_sent_final_sent_id_uindex">
-      <UnderlyingIndexName>cafe_sent_final_sent_id_uindex</UnderlyingIndexName>
+    <index id="307" parent="285" name="cafe_sen_sent_id_uindex">
+      <ColNames>sent_id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="308" parent="285" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <key id="309" parent="285" name="cafe_sen_sent_id_uindex">
+      <UnderlyingIndexName>cafe_sen_sent_id_uindex</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>
