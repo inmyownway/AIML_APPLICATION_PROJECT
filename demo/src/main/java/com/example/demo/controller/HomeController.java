@@ -23,12 +23,6 @@ public class HomeController {
     }
 
     /* 지도화면 */
-//    @GetMapping("/")
-//    public String home(Model model) {
-//        List<CafeDto> cafeDtoList = cafeService.getCafelist();
-//        model.addAttribute("cafeList", cafeDtoList);
-//        return "home";
-//    }
     @GetMapping("/")
     public String home(@RequestParam(value = "id", required = false) String id, Model model) {
         if(id==null){
@@ -36,27 +30,30 @@ public class HomeController {
             id = "0";
         }
         List<CafeDto> cafeDtoList = cafeService.getCafelist();
-        model.addAttribute("cafeList", cafeDtoList);
-        model.addAttribute("idFromDetail",id);
+        model.addAttribute("cafeList", cafeDtoList);//db에서 가져온 카페들 정보 리스트
+        model.addAttribute("idFromDetail",id);//넘어온 카페 id값 전달 (없으면 0)
         return "home";
     }
 
     /* 세부정보화면*/
     @RequestMapping("/more")
     public String cafeInfo(@RequestParam("id") String id, Model model){
+        // id값(cafe_id)으로 해당 카페를 찾고 카페정보를 가져온다
         CafeDto cafeDto = cafeService.getCafe(Integer.parseInt(id));
         List<Sentence> sentList = sentService.getSentence(Integer.parseInt(id));
-
+        // id값(cafe_id)으로 해당 카페를 찾고 문장을 가져온다
         CafeAndSentDTO cafeAndSentDTO = new CafeAndSentDTO(cafeDto, sentList);
         model.addAttribute("dto", cafeAndSentDTO);
 
         return "detailPage";
     }
+    /* 검색화면 */
     @GetMapping("/search")
     public String search(){
         return "search";
     }
 
+    /* 검색결과화면 */
     @GetMapping("/search/result")
     public String search(@RequestParam(value = "text", defaultValue = "") String text,
                          @RequestParam(value = "filters", defaultValue = "000000") String filter, Model model){

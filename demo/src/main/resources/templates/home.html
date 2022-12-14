@@ -23,20 +23,6 @@
 </style>
 <body>
 
-<!-- 타이틀
-<nav class="navbar mt-2 p-0" style="background-color: #ffffff">
-    <div class="container-fluid justify-content-center align-content-center">
-        <img src="/assets/지도_컬러.png" width="40" class="me-2 pb-2">
-        <span id="nav_title" class="navbar-brand fw-normal fs-1">홍대생의 카공지도</span><br>
-    </div>
-</nav>
- 설명글
-<div class="container m-0">
-    <div class="text-center mb-2">
-        <span class="fw-light" style="font-size:15px">카페를 클릭해 정보를 확인해보세요!</span>
-    </div>
-</div>
--->
 <!-- 지도 -->
 <div id="map" style="width:100%;height:100vh; margin: 0 auto; float : left; outline-color:#ffffff">
     <div id="top-nav-bar">
@@ -132,7 +118,6 @@
         cafe.cnt=item.cnt
         cafe.cafe_lat = item.cafe_lat
         cafe.cafe_lng = item.cafe_lng
-
 
         cafeArr.push(cafe);
     });
@@ -258,12 +243,6 @@
         });
 
         /* 정보창 */
-
-        // 현위치 버튼
-
-
-
-
         // DB에 있는거 넣기
         for(var i = 0; i<cafeArr.length;i++)
         {
@@ -314,7 +293,6 @@
 
 
                 //p 태그 글자(innerText) 바꿔주기
-                //t1.innerText = "id : " + cafeArr[aa].id;
                 t2.innerText = cafeArr[seq].name;
                 t3.innerText = cafeArr[seq].place;
                 t4.innerText = "조용함  " + cafeArr[seq].key_num[0];

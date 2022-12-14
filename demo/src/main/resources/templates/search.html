@@ -73,7 +73,6 @@
 -->
 <script>
     var filterArr = ["0","0","0","0","0","0"]; //필터 내용을 저장하는 배열
-    //var showFilterValue = document.getElementById("showFilter"); //필터입력값 보여주기 위한 text
     var result = document.getElementById('filters');
 
     //필터 내용을 저장하는 함수
@@ -85,15 +84,11 @@
 
         if(confirmCheck == true){
             console.log("check");
-            //filterArr.push(filterVal); // check value filter 배열에 입력
             filterArr[filterVal-1] = 1; // check value filter 배열에 입력
 
         }else{
-            //filterArr.splice(filterArr.indexOf(filterVal), 1); //배열내용 삭제: 배열.splice(삭제하고싶은 요소의 index, 삭제하고자하는 갯수)
             filterArr[filterVal-1] = 0;
         }
-
-        //showFilterValue.value = filterArr; // textBox에 필터 배열 추가
         console.log("필터입력값 출력 : "+filterArr);
         result.value = filterArr.join("");
     }
