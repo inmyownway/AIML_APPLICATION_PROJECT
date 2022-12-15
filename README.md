@@ -17,6 +17,9 @@
 1. IntelliJ로 Build.gradle 실행후 DemoApplication 실행
 
 <img src="https://user-images.githubusercontent.com/90558247/207782476-8d594c3e-bd27-42c3-9682-4f2cb59c3aef.png"  width = "200" height = "200">
+
+<img src="https://user-images.githubusercontent.com/90558247/207782731-fbb972c4-00d5-4c01-a7e1-3e4f1825bcc6.png"  width = "400" height = "100">
+
 2. http://localhost:8080/ 에서 확인가능합니다.
 
 3. 데이터베이스는 AWS RDS 원격 DB을 사용했습니다.
