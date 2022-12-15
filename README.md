@@ -21,4 +21,5 @@
 <img src="https://user-images.githubusercontent.com/90558247/207773219-b29553e6-10f5-461c-811d-e79b1785a669.png" width = "300" height = "600">
 
 ### 검색화면입니다. 검색창에 카페 이름을 검색할수있으며 키워드 선택시 해당 키워드가 높은 비율로 있는 카페를 보여줍니다.
-<img src="https://user-images.githubusercontent.com/90558247/207773219-b29553e6-10f5-461c-811d-e79b1785a669.png](https://user-images.githubusercontent.com/90558247/207773386-c9824385-99d6-4a3c-81f2-d1a5fa7ea4a9.png)" width = "300" height = "600">
+<img src="https://user-images.githubusercontent.com/90558247/207773545-3eb17a6e-1121-45eb-b366-c67bb93f7a2c.png" width = "300" height = "600">
+
