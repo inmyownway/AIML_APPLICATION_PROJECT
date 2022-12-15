@@ -1,6 +1,11 @@
-# AIML APPLICATION PROJECT
+### 홍익대학교 컴퓨터공학과 2022 AIML APPLICATION PROJECT
+22.03 ~ 22.11
+***
+
+
 # 홍대생의 카페지도
-홍익대학교 주변 카페중에 카공하기 좋은 카페들을 보여주는 서비스입니다.
+‘카공’ 적합성을 판단하는 기준이 될 수 있는 대표적인 키워드들을 선정하고, 인터넷 상의 리뷰 데이터를 수집하고 그 키워드들을 중심으로 가공한 정보를 제공합니다. 이를 통해 사용자가 홍대 주변에서 ‘카공’을 위한 카페를 선택하는 데에 도움을 주는 서비스를 개발하는 프로젝트입니다.
+
 
 
 ## Team Members 
@@ -13,26 +18,27 @@
 
 ***
 ## Build and Execution manual
-## 실행방법
-1. IntelliJ로 Build.gradle 실행후 DemoApplication 실행
+### 실행 방법
+1. IntelliJ 또는 기타 IDE로 Build.gradle 파일을 실행 후 DemoApplication 을 실행합니다.
 
 <img src="https://user-images.githubusercontent.com/90558247/207782476-8d594c3e-bd27-42c3-9682-4f2cb59c3aef.png"  width = "300" height = "200">
 
 <img src="https://user-images.githubusercontent.com/90558247/207782731-fbb972c4-00d5-4c01-a7e1-3e4f1825bcc6.png"  width = "400" height = "100">
 
-2. http://localhost:8080/ 에서 확인가능합니다.
+2. http://localhost:8080/ 에 접속하여 확인 가능합니다.
 
-3. 데이터베이스는 AWS RDS 원격 DB을 사용해서 추가연결없이 할수있습니다. 
+3. 데이터베이스는 AWS RDS 원격 DB을 사용하여 기본으로 연결되어 있습니다. 
 ***
-### 메인화면에서 카페 마커 클릭시 카페 정보와 키워드 개수를 확인할 수 있습니다.
+### 서비스 설명
+1. 메인화면에서 카페 마커 클릭시 카페 정보와 키워드 개수를 확인할 수 있습니다.
 <img src="https://user-images.githubusercontent.com/90558247/207772894-374f17cf-1e65-41f0-adac-86fb3dd5ede1.png"  width = "300" height = "600">
 
-### 더보기 버튼 클릭시 해당 카페의 키워드에 맞는 문장들을 볼수있습니다.
+2. 더보기 버튼 클릭 시, 해당 카페의 키워드에 맞는 문장들을 볼 수 있습니다.
 <img src="https://user-images.githubusercontent.com/90558247/207773219-b29553e6-10f5-461c-811d-e79b1785a669.png" width = "300" height = "600">
 
-### 검색화면 입니다. 검색창에 카페 이름을 검색할수있으며 키워드 선택시 해당 키워드가 높은 비율로 있는 카페를 보여줍니다.
+3. 검색화면 입니다. 검색창에 카페 이름을 검색할 수 있으며 키워드 선택 시 해당 키워드가 높은 비율로 있는 카페를 보여줍니다.
 <img src="https://user-images.githubusercontent.com/90558247/207773545-3eb17a6e-1121-45eb-b366-c67bb93f7a2c.png" width = "300" height = "600">
 
-### 검색결과 화면입니다. 
+4. 검색결과 화면입니다. 
 <img src="https://user-images.githubusercontent.com/90558247/207773662-4c2ec462-d6ad-4b20-a59d-529d44eee370.png" width = "300" height = "600">
 
