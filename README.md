@@ -33,8 +33,9 @@
 1. 메인화면에서 카페 마커 클릭시 카페 정보와 키워드 개수를 확인할 수 있습니다.
 <img src="https://user-images.githubusercontent.com/90558247/207772894-374f17cf-1e65-41f0-adac-86fb3dd5ede1.png"  width = "300" height = "600">
 
+
 2. 더보기 버튼 클릭 시, 해당 카페의 키워드에 맞는 문장들을 볼 수 있습니다.
-<img src="https://user-images.githubusercontent.com/90558247/207773219-b29553e6-10f5-461c-811d-e79b1785a669.png" width = "300" height = "600">
+<img src="https://user-images.githubusercontent.com/90558247/207787426-4841875c-8d6f-45d0-ba19-92dcbf67bea4.png" width = "300" height = "600">
 
 3. 검색화면 입니다. 검색창에 카페 이름을 검색할 수 있으며 키워드 선택 시 해당 키워드가 높은 비율로 있는 카페를 보여줍니다.
 <img src="https://user-images.githubusercontent.com/90558247/207773545-3eb17a6e-1121-45eb-b366-c67bb93f7a2c.png" width = "300" height = "600">
