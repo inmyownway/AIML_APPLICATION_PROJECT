@@ -127,7 +127,7 @@
     $(function() {
         initMap();
     });
-
+    // 처음 지도 
     function initMap() {
         document.getElementById("info-id").style.display = 'none';
         var areaArr = new Array();  // 지역을 담는 배열 ( 지역명/위도경도 )
@@ -159,6 +159,7 @@
         });
         var infowindow = new naver.maps.InfoWindow();
 
+        // 지도 띄우기 성공시
         function onSuccessGeolocation(position) {
             var location = new naver.maps.LatLng(position.coords.latitude,
                 position.coords.longitude);
@@ -188,7 +189,7 @@
             console.log('Coordinates: ' + location.toString());
         }
 
-
+         // 지도 띄우기 실패시 에러 메시지
         function onErrorGeolocation() {
             // https 연결이 아니면 geolocation이 불가능 >
             var location = new naver.maps.LatLng(37.55029614586658, 126.92515795593972);
@@ -212,7 +213,7 @@
             markers.push(marker);
        
         }
-
+        // 현위치 
         $(window).on("load", function() {
             if (navigator.geolocation) {
                 /**
