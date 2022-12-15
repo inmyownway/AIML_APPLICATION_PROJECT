@@ -12,4 +12,4 @@
 ## build and execution manual
 메인화면입니다. 
 
-<img src="https://user-images.githubusercontent.com/90558247/207772894-374f17cf-1e65-41f0-adac-86fb3dd5ede1.png"  width = "100" height = "100">
+<img src="https://user-images.githubusercontent.com/90558247/207772894-374f17cf-1e65-41f0-adac-86fb3dd5ede1.png"  width = "300" height = "600">
