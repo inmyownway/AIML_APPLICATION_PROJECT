@@ -14,4 +14,5 @@
 <img src="https://user-images.githubusercontent.com/90558247/207772894-374f17cf-1e65-41f0-adac-86fb3dd5ede1.png"  width = "300" height = "600">
 
 ### 더보기 버튼 클릭시 해당 카페의 키워드에 맞는 문장들을 볼수있습니다.
-<img src="https://user-images.githubusercontent.com/90558247/207773219-b29553e6-10f5-461c-811d-e79b1785a669.png"width = "300" height = "600">
+
+<img src="https://user-images.githubusercontent.com/90558247/207773219-b29553e6-10f5-461c-811d-e79b1785a669.png" width = "300" height = "600">
