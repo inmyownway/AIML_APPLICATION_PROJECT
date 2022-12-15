@@ -132,8 +132,7 @@
         document.getElementById("info-id").style.display = 'none';
         var areaArr = new Array();  // 지역을 담는 배열 ( 지역명/위도경도 )
 
-        // w = window.innerWidth;
-        // h = window.innerHeight;
+
 
         let markers = new Array(); // 마커 정보를 담는 배열
         let infoWindows = new Array(); // 정보창을 담는 배열
@@ -174,11 +173,7 @@
                 map.panTo(curr_place);
             });
 
-            // map.setCenter(location); // 얻은 좌표를 지도의 중심으로 설정합니다.
-            //  map.setZoom(17); // 지도의 줌 레벨을 변경합니다.
-
-            // infowindow.setContent('<div style="padding:20px;">' + '현재위치' + '</div>');
-            // 사용자의 현 위치 마커 생성
+           
             var marker = new naver.maps.Marker({
                 map: map,
                 icon:{
@@ -188,7 +183,7 @@
                 position: new naver.maps.LatLng(position.coords.latitude, position.coords.longitude) // 지역구의 위도 경도 넣기
             });
             markers.push(marker);
-            //infowindow.open(map, location);
+   
 
             console.log('Coordinates: ' + location.toString());
         }
@@ -215,16 +210,7 @@
                 position: location // 지역구의 위도 경도 넣기
             });
             markers.push(marker);
-            //infowindow.open(map, location);
-
-
-
-            // var center = map.getCenter();
-            //
-            // infowindow.setContent('<div style="padding:20px;">' +
-            //     '<h5 style="margin-bottom:5px;color:#f00;">Geolocation failed!</h5>'+ "latitude: "+ center.lat() +"<br />longitude: "+ center.lng() +'</div>');
-            //
-            // infowindow.open(map, center);
+       
         }
 
         $(window).on("load", function() {
@@ -270,7 +256,6 @@
             });
 
             markers.push(marker); // 생성한 마커를 배열에 담는다.
-          //  infoWindows.push(infoWindow); // 생성한 정보창을 배열에 담는다.
         }
 
 
