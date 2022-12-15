@@ -11,7 +11,7 @@
 
 
 
-
+***
 ## Build and Execution manual
 ## 실행방법
 1. IntelliJ로 Build.gradle 실행후 DemoApplication 실행
@@ -23,7 +23,7 @@
 2. http://localhost:8080/ 에서 확인가능합니다.
 
 3. 데이터베이스는 AWS RDS 원격 DB을 사용했습니다.
-
+***
 ### 메인화면에서 카페 마커 클릭시 카페 정보와 키워드 개수를 확인할 수 있습니다.
 <img src="https://user-images.githubusercontent.com/90558247/207772894-374f17cf-1e65-41f0-adac-86fb3dd5ede1.png"  width = "300" height = "600">
 
